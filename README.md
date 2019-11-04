@@ -1,8 +1,8 @@
-**fast checksum.**
+**fast checksum**
 ------------------
-### Hash generator for file ###
+### Hash generator for file. ###
 
-checksum.py
+checksum.py @ Example: python3 checksum.py filename
 
 - md5
 - sha1
@@ -10,9 +10,12 @@ checksum.py
 - sha512
 ------------------
 
-### Hash generator for text ###
+### Hash generator for text. ###
 
-checksum.go
+checksum.go @ Example: go run checksum.go
+```golang
+privatemessage := "test sum" // Change test sum
+```
 
 - md5
 - sha1
