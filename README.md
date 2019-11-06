@@ -22,7 +22,3 @@ privatemessage := "test sum" // Change test sum
 - sha256
 - sha512
 ------------------
-
-### Binary sum calc. ###
-
-Example: g++ convert.cc -> convert number to binary @ g++ binary.cc -> follow the command.
