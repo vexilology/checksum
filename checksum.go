@@ -10,7 +10,10 @@ import (
 
 func main() {
 
-	privatemessage := "test sum"
+	var privatemessage string
+
+	fmt.Println("Enter the message:")
+	fmt.Scan(&privatemessage)
 
 	MD5 := fmt.Sprintf("%x", md5.Sum([]byte(privatemessage)))
 	SHA1 := fmt.Sprintf("%x", sha1.Sum([]byte(privatemessage)))
