@@ -2,7 +2,7 @@
 ------------------
 ### Hash generator for file. ###
 
-checksum.py @ Example: python3 checksum.py filename
+checksum.py @ Run and use.
 
 - md5
 - sha1
@@ -12,10 +12,7 @@ checksum.py @ Example: python3 checksum.py filename
 
 ### Hash generator for text. ###
 
-checksum.go @ Example: go run checksum.go
-```golang
-privatemessage := "test sum" // Change test sum
-```
+checksum.go @ Run and use.
 
 - md5
 - sha1
