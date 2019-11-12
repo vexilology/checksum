@@ -2,8 +2,7 @@
 ------------------
 ### Hash generator for file. ###
 
-checksumfile.go @ Run and use.
-checksumfile.py @ Run and use.
+checksumfile.go @ checksumfile.py -- Run and use.
 
 - md5
 - sha1
@@ -13,8 +12,7 @@ checksumfile.py @ Run and use.
 
 ### Hash generator for text. ###
 
-checksummess.go @ Run and use.
-checksummess.py @ Run and use.
+checksummess.go @ checksummess.py -- Run and use.
 
 - md5
 - sha1
