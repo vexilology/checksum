@@ -9,47 +9,16 @@ import (
 	"io/ioutil"
 	"os"
 	"log"
-	"encoding/hex"
 )
 
 func main() {
-	md5 := md5.New()
-	f, err := ioutil.ReadFile(os.Args[1])
-	md5.Write(f)
+	data, err := ioutil.ReadFile(os.Args[1])
 	if err !=  nil {
 		log.Fatal(err)
 	}
 
-	os.Stdout.WriteString(hex.EncodeToString(md5.Sum(nil)))
-	fmt.Println(": <- MD5")
-
-	sha1 := sha1.New()
-	e, err := ioutil.ReadFile(os.Args[1])
-	sha1.Write(e)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	os.Stdout.WriteString(hex.EncodeToString(sha1.Sum(nil)))
-	fmt.Println(": <- SHA1")
-
-	sha256 := sha256.New()
-	s, err := ioutil.ReadFile(os.Args[1])
-	sha256.Write(s)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	os.Stdout.WriteString(hex.EncodeToString(sha256.Sum(nil)))
-	fmt.Println(": <- SHA256")
-
-	sha512 := sha512.New()
-	x, err := ioutil.ReadFile(os.Args[1])
-	sha512.Write(x)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	os.Stdout.WriteString(hex.EncodeToString(sha512.Sum(nil)))
-	fmt.Println(": <- SHA512")
+	fmt.Printf("MD5: %x\n\n", md5.Sum(data))
+	fmt.Printf("SHA1: %x\n\n", sha1.Sum(data))
+	fmt.Printf("SHA256: %x\n\n", sha256.Sum256(data))
+	fmt.Printf("SHA512: %x\n\n", sha512.Sum512(data))
 }
