@@ -10,23 +10,26 @@ import (
 	"crypto/sha512"
 	"io/ioutil"
 	"os"
-	"log"
 	"strconv"
 )
 
 func main() {
 
+	if len(os.Args) < 2 {
+        fmt.Println("File not found. Try again --> go run checksumfile.go FILENAME")
+        return
+    }
+
 	data, err := ioutil.ReadFile(os.Args[1])
+
+	if err !=  nil {
+		panic(err)
+	}
 
 	firstcrc32 := crc32.ChecksumIEEE([]byte(data))
 	secondcrc32 := strconv.FormatUint(uint64(firstcrc32), 16)
 	firstadler32 := adler32.Checksum([]byte(data))
 	secondadler32 := strconv.FormatUint(uint64(firstadler32), 16)
-
-	if err !=  nil {
-		log.Print("File not found. Try again --> go run checksumfile.go FILENAME")
-    	log.Fatal(err)
-	}
 
 	fmt.Println("CRC32:", secondcrc32)
 	fmt.Println("ADLER32:", secondadler32)
