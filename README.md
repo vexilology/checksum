@@ -2,20 +2,26 @@
 ------------------
 ### Hash generator for file. ###
 
-checksumfile.go @ checksumfile.py -- Run and use.
+checksumfile.go @ Run and use.
 
+- crc32
+- adler32
 - md5
 - sha1
 - sha256
+- sha384
 - sha512
 ------------------
 
 ### Hash generator for text. ###
 
-checksummess.go @ checksummess.py -- Run and use.
+checksummess.go @ Run and use.
 
+- crc32
+- adler32
 - md5
 - sha1
 - sha256
+- sha384
 - sha512
 ------------------
