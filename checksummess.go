@@ -15,7 +15,7 @@ func main() {
 
 	var data string
 
-	fmt.Println("Enter the message:")
+	fmt.Print("Enter the message: ")
 	fmt.Scan(&data)
 
 	firstCRC32 := crc32.ChecksumIEEE([]byte(data))
