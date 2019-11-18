@@ -3,6 +3,8 @@ package main
 import (
 	"strconv"
 	"fmt"
+	"bufio"
+	"os"
 	"hash/crc32"
 	"hash/adler32"
 	"crypto/md5"
@@ -15,8 +17,11 @@ func main() {
 
 	var data string
 
-	fmt.Print("Enter the message: ")
-	fmt.Scan(&data)
+	fmt.Println("Enter your message: ")
+	scanner := bufio.NewScanner(os.Stdin)
+	if scanner.Scan() {
+		data = scanner.Text()
+	}
 
 	firstCRC32 := crc32.ChecksumIEEE([]byte(data))
 	secondCRC32 := strconv.FormatUint(uint64(firstCRC32), 16)
