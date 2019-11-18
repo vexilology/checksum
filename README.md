@@ -4,7 +4,7 @@
 
 checksumfile.go @ Run and use.
 
-- length
+- length bytes
 - crc32
 - adler32
 - md5
