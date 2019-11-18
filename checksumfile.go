@@ -32,6 +32,8 @@ func main() {
 	secondadler32 := strconv.FormatUint(uint64(firstadler32), 16)
 
 	fmt.Print("-----------------------\n")
+	fmt.Printf("Length: %d bytes\n", len(data))
+	fmt.Println("===")
 	fmt.Println("CRC32:", secondcrc32)
 	fmt.Println("===")
 	fmt.Println("ADLER32:", secondadler32)
