@@ -28,6 +28,7 @@ func main() {
 	SHA384 := fmt.Sprintf("%x", sha512.Sum384([]byte(data)))
 	SHA512 := fmt.Sprintf("%x", sha512.Sum512([]byte(data)))
 
+	fmt.Print("-----------------------\n")
 	fmt.Println("CRC32:", secondCRC32)
 	fmt.Println("ADLER32:", secondADLER32)
 	fmt.Println("MD5:", MD5)
@@ -35,4 +36,5 @@ func main() {
 	fmt.Println("SHA256:", SHA256)
 	fmt.Println("SHA384:", SHA384)
 	fmt.Println("SHA512:", SHA512)
+	fmt.Print("-----------------------")
 }
