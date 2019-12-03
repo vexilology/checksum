@@ -5,6 +5,7 @@
 checksumfile.go @ Run and use.
 
 - length bytes
+- base64
 - crc32
 - adler32
 - md5
@@ -18,6 +19,7 @@ checksumfile.go @ Run and use.
 
 checksummess.go @ Run and use.
 
+- base64
 - crc32
 - adler32
 - md5
