@@ -5,7 +5,8 @@ import (
 	"fmt"
 	"bufio"
 	"os"
-	b64 "encoding/base64"
+	"encoding/base32"
+	"encoding/base64"
 	"hash/crc32"
 	"hash/adler32"
 	"crypto/md5"
@@ -33,9 +34,12 @@ func main() {
 	SHA256 := fmt.Sprintf("%x", sha256.Sum256([]byte(data)))
 	SHA384 := fmt.Sprintf("%x", sha512.Sum384([]byte(data)))
 	SHA512 := fmt.Sprintf("%x", sha512.Sum512([]byte(data)))
-	BASE64 := b64.StdEncoding.EncodeToString([]byte(data))
+	BASE32 := base32.StdEncoding.EncodeToString([]byte(data))
+	BASE64 := base64.StdEncoding.EncodeToString([]byte(data))
 
 	fmt.Print("-----------------------\n")
+	fmt.Println("BASE32:", BASE32)
+	fmt.Println("===")
 	fmt.Println("BASE64:", BASE64)
 	fmt.Println("===")
 	fmt.Println("CRC32:", secondCRC32)
