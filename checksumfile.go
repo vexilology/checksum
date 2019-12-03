@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	b64 "encoding/base64"
+	"encoding/base32"
+	"encoding/base64"
 	"hash/crc32"
 	"hash/adler32"
 	"crypto/md5"
@@ -31,10 +32,13 @@ func main() {
 	secondcrc32 := strconv.FormatUint(uint64(firstcrc32), 16)
 	firstadler32 := adler32.Checksum([]byte(data))
 	secondadler32 := strconv.FormatUint(uint64(firstadler32), 16)
-	xbase64 := b64.URLEncoding.EncodeToString([]byte(data))
+	xbase32 := base32.StdEncoding.EncodeToString(data)
+	xbase64 := base64.StdEncoding.EncodeToString(data)
 
 	fmt.Print("-----------------------\n")
 	fmt.Printf("Length: %d bytes\n", len(data))
+	fmt.Println("===")
+	fmt.Println("BASE32:", xbase32)
 	fmt.Println("===")
 	fmt.Println("BASE64:", xbase64)
 	fmt.Println("===")
