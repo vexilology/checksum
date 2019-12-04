@@ -16,6 +16,7 @@ import (
 	"golang.org/x/crypto/md4"
 	"golang.org/x/crypto/blake2b"
 	"golang.org/x/crypto/ripemd160"
+	"golang.org/x/crypto/sha3"
 )
 
 func main() {
@@ -39,8 +40,8 @@ func main() {
 	xbase64 := base64.StdEncoding.EncodeToString(data)
 	xMD4 := md4.New()
 	xMD4.Write([]byte(data))
-	xRIPMD160 := ripemd160.New()
-	xRIPMD160.Write([]byte(data))
+	xRIPEMD160 := ripemd160.New()
+	xRIPEMD160.Write([]byte(data))
 
 	fmt.Print("-----------------------\n")
 	fmt.Printf("Length: %d bytes\n", len(data))
@@ -57,7 +58,7 @@ func main() {
 	fmt.Println("===")
 	fmt.Printf("BLAKE2B-512: %x\n", blake2b.Sum512(data))
 	fmt.Println("===")
-	fmt.Printf("RIPEMD160: %x\n", xRIPMD160.Sum(nil))
+	fmt.Printf("RIPEMD160: %x\n", xRIPEMD160.Sum(nil))
 	fmt.Println("===")
 	fmt.Printf("MD4: %x\n", xMD4.Sum([]byte(nil)))
 	fmt.Println("===")
@@ -70,4 +71,12 @@ func main() {
 	fmt.Printf("SHA384: %x\n", sha512.Sum384(data))
 	fmt.Println("===")
 	fmt.Printf("SHA512: %x\n", sha512.Sum512(data))
+	fmt.Println("===")
+	fmt.Printf("SHA3-224: %x\n", sha3.Sum224(data))
+	fmt.Println("===")
+	fmt.Printf("SHA3-256: %x\n", sha3.Sum256(data))
+	fmt.Println("===")
+	fmt.Printf("SHA3-384: %x\n", sha3.Sum384(data))
+	fmt.Println("===")
+	fmt.Printf("SHA3-512: %x\n", sha3.Sum512(data))
 }
