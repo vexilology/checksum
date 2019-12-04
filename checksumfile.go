@@ -15,6 +15,7 @@ import (
 	"strconv"
 	"golang.org/x/crypto/md4"
 	"golang.org/x/crypto/blake2b"
+	"golang.org/x/crypto/ripemd160"
 )
 
 func main() {
@@ -38,6 +39,8 @@ func main() {
 	xbase64 := base64.StdEncoding.EncodeToString(data)
 	xMD4 := md4.New()
 	xMD4.Write([]byte(data))
+	xRIPMD160 := ripemd160.New()
+	xRIPMD160.Write([]byte(data))
 
 	fmt.Print("-----------------------\n")
 	fmt.Printf("Length: %d bytes\n", len(data))
@@ -53,6 +56,8 @@ func main() {
 	fmt.Printf("BLAKE2B-256: %x\n", blake2b.Sum256(data))
 	fmt.Println("===")
 	fmt.Printf("BLAKE2B-512: %x\n", blake2b.Sum512(data))
+	fmt.Println("===")
+	fmt.Printf("RIPEMD160: %x\n", xRIPMD160.Sum(nil))
 	fmt.Println("===")
 	fmt.Printf("MD4: %x\n", xMD4.Sum([]byte(nil)))
 	fmt.Println("===")
