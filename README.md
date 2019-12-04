@@ -9,6 +9,7 @@ checksumfile.go @ Run and use.
 - base64
 - crc32
 - adler32
+- md4
 - md5
 - sha1
 - sha256
@@ -24,6 +25,7 @@ checksummess.go @ Run and use.
 - base64
 - crc32
 - adler32
+- md4
 - md5
 - sha1
 - sha256
