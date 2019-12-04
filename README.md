@@ -11,6 +11,7 @@ checksumfile.go @ Run and use.
 - adler32
 - blake2b-256
 - blake2b-512
+- ripemd160
 - md4
 - md5
 - sha1
@@ -29,6 +30,7 @@ checksummess.go @ Run and use.
 - adler32
 - blake2b-256
 - blake2b-512
+- ripemd160
 - md4
 - md5
 - sha1
