@@ -13,6 +13,7 @@ import (
 	"crypto/sha1"
 	"crypto/sha256"
 	"crypto/sha512"
+	"golang.org/x/crypto/md4"
 )
 
 func main() {
@@ -29,6 +30,9 @@ func main() {
 	secondCRC32 := strconv.FormatUint(uint64(firstCRC32), 16)
 	firstADLER32 := adler32.Checksum([]byte(data))
 	secondADLER32 := strconv.FormatUint(uint64(firstADLER32), 16)
+	firstMD4 := md4.New()
+	firstMD4.Write([]byte(data))
+	secondMD4 := fmt.Sprintf("%x", firstMD4.Sum([]byte(nil)))
 	MD5 := fmt.Sprintf("%x", md5.Sum([]byte(data)))
 	SHA1 := fmt.Sprintf("%x", sha1.Sum([]byte(data)))
 	SHA256 := fmt.Sprintf("%x", sha256.Sum256([]byte(data)))
@@ -45,6 +49,8 @@ func main() {
 	fmt.Println("CRC32:", secondCRC32)
 	fmt.Println("===")
 	fmt.Println("ADLER32:", secondADLER32)
+	fmt.Println("===")
+	fmt.Println("MD4:", secondMD4)
 	fmt.Println("===")
 	fmt.Println("MD5:", MD5)
 	fmt.Println("===")
