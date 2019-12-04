@@ -16,6 +16,7 @@ import (
 	"golang.org/x/crypto/md4"
 	"golang.org/x/crypto/blake2b"
 	"golang.org/x/crypto/ripemd160"
+	"golang.org/x/crypto/sha3"
 )
 
 func main() {
@@ -47,6 +48,10 @@ func main() {
 	firstRIPEMD160 := ripemd160.New()
 	firstRIPEMD160.Write([]byte(data))
 	secondRIPEMD160 := fmt.Sprintf("%x", firstRIPEMD160.Sum(nil))
+	SHA3_224 := fmt.Sprintf("%x", sha3.Sum224([]byte(data)))
+	SHA3_256 := fmt.Sprintf("%x", sha3.Sum256([]byte(data)))
+	SHA3_384 := fmt.Sprintf("%x", sha3.Sum384([]byte(data)))
+	SHA3_512 := fmt.Sprintf("%x", sha3.Sum512([]byte(data)))
 
 	fmt.Print("-----------------------\n")
 	fmt.Println("BASE32:", BASE32)
@@ -74,4 +79,12 @@ func main() {
 	fmt.Println("SHA384:", SHA384)
 	fmt.Println("===")
 	fmt.Println("SHA512:", SHA512)
+	fmt.Println("===")
+	fmt.Println("SHA3-224:", SHA3_224)
+	fmt.Println("===")
+	fmt.Println("SHA3-256:", SHA3_256)
+	fmt.Println("===")
+	fmt.Println("SHA3-384:", SHA3_384)
+	fmt.Println("===")
+	fmt.Println("SHA3-512:", SHA3_512)
 }
