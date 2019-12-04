@@ -13,6 +13,7 @@ import (
 	"io/ioutil"
 	"os"
 	"strconv"
+	"golang.org/x/crypto/md4"
 )
 
 func main() {
@@ -34,6 +35,8 @@ func main() {
 	secondadler32 := strconv.FormatUint(uint64(firstadler32), 16)
 	xbase32 := base32.StdEncoding.EncodeToString(data)
 	xbase64 := base64.StdEncoding.EncodeToString(data)
+	xMD4 := md4.New()
+	xMD4.Write([]byte(data))
 
 	fmt.Print("-----------------------\n")
 	fmt.Printf("Length: %d bytes\n", len(data))
@@ -45,6 +48,8 @@ func main() {
 	fmt.Println("CRC32:", secondcrc32)
 	fmt.Println("===")
 	fmt.Println("ADLER32:", secondadler32)
+	fmt.Println("===")
+	fmt.Printf("MD4: %x\n", xMD4.Sum([]byte(nil)))
 	fmt.Println("===")
 	fmt.Printf("MD5: %x\n", md5.Sum(data))
 	fmt.Println("===")
