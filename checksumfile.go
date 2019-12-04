@@ -14,6 +14,7 @@ import (
 	"os"
 	"strconv"
 	"golang.org/x/crypto/md4"
+	"golang.org/x/crypto/blake2b"
 )
 
 func main() {
@@ -48,6 +49,10 @@ func main() {
 	fmt.Println("CRC32:", secondcrc32)
 	fmt.Println("===")
 	fmt.Println("ADLER32:", secondadler32)
+	fmt.Println("===")
+	fmt.Printf("BLAKE2B-256: %x\n", blake2b.Sum256(data))
+	fmt.Println("===")
+	fmt.Printf("BLAKE2B-512: %x\n", blake2b.Sum512(data))
 	fmt.Println("===")
 	fmt.Printf("MD4: %x\n", xMD4.Sum([]byte(nil)))
 	fmt.Println("===")
