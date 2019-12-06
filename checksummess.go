@@ -48,6 +48,7 @@ func main() {
 	MD5 := fmt.Sprintf("%x", md5.Sum([]byte(data)))
 
 	SHA1 := fmt.Sprintf("%x", sha1.Sum([]byte(data)))
+	SHA224 := fmt.Sprintf("%x", sha256.Sum224([]byte(data)))
 	SHA256 := fmt.Sprintf("%x", sha256.Sum256([]byte(data)))
 	SHA384 := fmt.Sprintf("%x", sha512.Sum384([]byte(data)))
 	SHA512 := fmt.Sprintf("%x", sha512.Sum512([]byte(data)))
@@ -91,6 +92,8 @@ func main() {
 	fmt.Println("MD5:", MD5)
 	fmt.Print("===\n")
 	fmt.Println("SHA1:", SHA1)
+	fmt.Print("===\n")
+	fmt.Println("SHA224:", SHA224)
 	fmt.Print("===\n")
 	fmt.Println("SHA256:", SHA256)
 	fmt.Print("===\n")

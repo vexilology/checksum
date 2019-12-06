@@ -79,6 +79,8 @@ func main() {
 	fmt.Print("===\n")
 	fmt.Printf("SHA1: %x\n", sha1.Sum(data))
 	fmt.Print("===\n")
+	fmt.Printf("SHA224: %x\n", sha256.Sum224(data))
+	fmt.Print("===\n")
 	fmt.Printf("SHA256: %x\n", sha256.Sum256(data))
 	fmt.Print("===\n")
 	fmt.Printf("SHA384: %x\n", sha512.Sum384(data))
