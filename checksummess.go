@@ -29,6 +29,13 @@ func main() {
 		data = scanner.Text()
 	}
 
+	newkeccak256 := sha3.NewLegacyKeccak256()
+	newkeccak256.Write([]byte(data))
+	lastkeccak256 := fmt.Sprintf("%x", newkeccak256.Sum(nil))
+	newkeccak512 := sha3.NewLegacyKeccak512()
+	newkeccak512.Write([]byte(data))
+	lastkeccak512 := fmt.Sprintf("%x", newkeccak512.Sum(nil))
+	
 	firstCRC32 := crc32.ChecksumIEEE([]byte(data))
 	secondCRC32 := strconv.FormatUint(uint64(firstCRC32), 16)
 
@@ -38,11 +45,9 @@ func main() {
 	firstMD4 := md4.New()
 	firstMD4.Write([]byte(data))
 	secondMD4 := fmt.Sprintf("%x", firstMD4.Sum([]byte(nil)))
-
 	MD5 := fmt.Sprintf("%x", md5.Sum([]byte(data)))
 
 	SHA1 := fmt.Sprintf("%x", sha1.Sum([]byte(data)))
-
 	SHA256 := fmt.Sprintf("%x", sha256.Sum256([]byte(data)))
 	SHA384 := fmt.Sprintf("%x", sha512.Sum384([]byte(data)))
 	SHA512 := fmt.Sprintf("%x", sha512.Sum512([]byte(data)))
@@ -66,6 +71,10 @@ func main() {
 	fmt.Println("BASE32:", BASE32)
 	fmt.Print("===\n")
 	fmt.Println("BASE64:", BASE64)
+	fmt.Print("===\n")
+	fmt.Println("KECCAK256:", lastkeccak256)
+	fmt.Print("===\n")
+	fmt.Println("KECCAK512:", lastkeccak512)
 	fmt.Print("===\n")
 	fmt.Println("CRC32:", secondCRC32)
 	fmt.Print("===\n")
