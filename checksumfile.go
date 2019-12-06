@@ -32,6 +32,11 @@ func main() {
 		panic(err)
 	}
 
+	newkeccak256 := sha3.NewLegacyKeccak256()
+	newkeccak256.Write([]byte(data))
+	newkeccak512 := sha3.NewLegacyKeccak512()
+	newkeccak512.Write([]byte(data))
+
 	firstcrc32 := crc32.ChecksumIEEE([]byte(data))
 	secondcrc32 := strconv.FormatUint(uint64(firstcrc32), 16)
 
@@ -53,6 +58,10 @@ func main() {
 	fmt.Println("BASE32:", xbase32)
 	fmt.Print("===\n")
 	fmt.Println("BASE64:", xbase64)
+	fmt.Print("===\n")
+	fmt.Printf("KECCAK256: %x\n", newkeccak256.Sum(nil))
+	fmt.Print("===\n")
+	fmt.Printf("KECCAK512: %x\n", newkeccak512.Sum(nil))
 	fmt.Print("===\n")
 	fmt.Println("CRC32:", secondcrc32)
 	fmt.Print("===\n")
