@@ -7,6 +7,8 @@ checksumfile.go @ Run and use.
 - length bytes
 - base32
 - base64
+- keccak256
+- keccak512
 - crc32
 - adler32
 - blake2b-256
@@ -30,6 +32,8 @@ checksummess.go @ Run and use.
 
 - base32
 - base64
+- keccak256
+- keccak512
 - crc32
 - adler32
 - blake2b-256
