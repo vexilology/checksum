@@ -7,6 +7,7 @@ checksumfile.go @ Run and use.
 - length bytes
 - base32
 - base64
+- tiger192[rounds-3]
 - keccak256
 - keccak512
 - crc32
@@ -33,6 +34,7 @@ checksummess.go @ Run and use.
 
 - base32
 - base64
+- tiger192[rounds-3]
 - keccak256
 - keccak512
 - crc32
