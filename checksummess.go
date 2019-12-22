@@ -17,6 +17,7 @@ import (
 	"golang.org/x/crypto/blake2b"
 	"golang.org/x/crypto/ripemd160"
 	"golang.org/x/crypto/sha3"
+	"github.com/cxmcc/tiger"
 )
 
 func main() {
@@ -35,7 +36,7 @@ func main() {
 	newkeccak512 := sha3.NewLegacyKeccak512()
 	newkeccak512.Write([]byte(data))
 	lastkeccak512 := fmt.Sprintf("%x", newkeccak512.Sum(nil))
-	
+
 	firstCRC32 := crc32.ChecksumIEEE([]byte(data))
 	secondCRC32 := strconv.FormatUint(uint64(firstCRC32), 16)
 
@@ -68,10 +69,16 @@ func main() {
 	SHA3_384 := fmt.Sprintf("%x", sha3.Sum384([]byte(data)))
 	SHA3_512 := fmt.Sprintf("%x", sha3.Sum512([]byte(data)))
 
+	firstTiger := tiger.New()
+	firstTiger.Write([]byte(data))
+	secondTiger := fmt.Sprintf("%x", firstTiger.Sum(nil))
+
 	fmt.Print("-----------------------\n")
 	fmt.Println("BASE32:", BASE32)
 	fmt.Print("===\n")
 	fmt.Println("BASE64:", BASE64)
+	fmt.Print("===\n")
+	fmt.Println("tiger192[rounds-3]:", secondTiger)
 	fmt.Print("===\n")
 	fmt.Println("KECCAK256:", lastkeccak256)
 	fmt.Print("===\n")

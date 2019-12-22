@@ -17,6 +17,7 @@ import (
 	"golang.org/x/crypto/blake2b"
 	"golang.org/x/crypto/ripemd160"
 	"golang.org/x/crypto/sha3"
+	"github.com/cxmcc/tiger"
 )
 
 func main() {
@@ -52,12 +53,17 @@ func main() {
 	xRIPEMD160 := ripemd160.New()
 	xRIPEMD160.Write([]byte(data))
 
+	xTiger := tiger.New()
+	xTiger.Write([]byte(data))
+
 	fmt.Print("-----------------------\n")
 	fmt.Printf("Length: %d bytes\n", len(data))
 	fmt.Print("===\n")
 	fmt.Println("BASE32:", xbase32)
 	fmt.Print("===\n")
 	fmt.Println("BASE64:", xbase64)
+	fmt.Print("===\n")
+	fmt.Printf("Tiger192[rounds-3]: %x\n", xTiger.Sum(nil))
 	fmt.Print("===\n")
 	fmt.Printf("KECCAK256: %x\n", newkeccak256.Sum(nil))
 	fmt.Print("===\n")
