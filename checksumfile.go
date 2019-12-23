@@ -79,6 +79,8 @@ func main() {
 	fmt.Print("===\n")
 	fmt.Printf("BLAKE2B-256 => %x\n", blake2b.Sum256(data))
 	fmt.Print("===\n")
+	fmt.Printf("BLAKE2B-384 => %x\n", blake2b.Sum384(data))
+	fmt.Print("===\n")
 	fmt.Printf("BLAKE2B-512 => %x\n", blake2b.Sum512(data))
 	fmt.Print("===\n")
 	fmt.Printf("RIPEMD160 => %x\n", xRIPEMD160.Sum(nil))

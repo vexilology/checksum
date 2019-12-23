@@ -60,6 +60,7 @@ func main() {
 	BASE64 := base64.StdEncoding.EncodeToString([]byte(data))
 
 	BLAKE2B256 := fmt.Sprintf("%x", blake2b.Sum256([]byte(data)))
+	BLAKE2B384 := fmt.Sprintf("%x", blake2b.Sum384([]byte(data)))
 	BLAKE2B512 := fmt.Sprintf("%x", blake2b.Sum512([]byte(data)))
 
 	firstRIPEMD160 := ripemd160.New()
@@ -95,6 +96,8 @@ func main() {
 	fmt.Println("ADLER32 =>", secondADLER32)
 	fmt.Print("===\n")
 	fmt.Println("BLAKE2B-256 =>", BLAKE2B256)
+	fmt.Print("===\n")
+	fmt.Println("BLAKE2B-384 =>", BLAKE2B384)
 	fmt.Print("===\n")
 	fmt.Println("BLAKE2B-512 =>", BLAKE2B512)
 	fmt.Print("===\n")
