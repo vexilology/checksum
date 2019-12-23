@@ -19,6 +19,7 @@ import (
 	"golang.org/x/crypto/ripemd160"
 	"golang.org/x/crypto/sha3"
 	"github.com/cxmcc/tiger"
+	"github.com/ebfe/keccak"
 )
 
 func main() {
@@ -30,6 +31,14 @@ func main() {
 	if scanner.Scan() {
 		data = scanner.Text()
 	}
+
+
+	newkeccak224 := keccak.New224()
+	newkeccak224.Write([]byte(data))
+	lastkeccak224 := fmt.Sprintf("%x", newkeccak224.Sum(nil))
+	newkeccak384 := keccak.New384()
+	newkeccak384.Write([]byte(data))
+	lastkeccak384 := fmt.Sprintf("%x", newkeccak384.Sum(nil))
 
 	newkeccak256 := sha3.NewLegacyKeccak256()
 	newkeccak256.Write([]byte(data))
@@ -90,7 +99,11 @@ func main() {
 	fmt.Print("===\n")
 	fmt.Println("TIGER192,3 =>", secondTiger)
 	fmt.Print("===\n")
+	fmt.Println("KECCAK224 =>", lastkeccak224)
+	fmt.Print("===\n")
 	fmt.Println("KECCAK256 =>", lastkeccak256)
+	fmt.Print("===\n")
+	fmt.Println("KECCAK384 =>", lastkeccak384)
 	fmt.Print("===\n")
 	fmt.Println("KECCAK512 =>", lastkeccak512)
 	fmt.Print("===\n")

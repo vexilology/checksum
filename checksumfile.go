@@ -19,6 +19,7 @@ import (
 	"golang.org/x/crypto/ripemd160"
 	"golang.org/x/crypto/sha3"
 	"github.com/cxmcc/tiger"
+	"github.com/ebfe/keccak"
 )
 
 func main() {
@@ -33,6 +34,11 @@ func main() {
 	if err !=  nil {
 		panic(err)
 	}
+
+	newkeccak224 := keccak.New224()
+	newkeccak224.Write([]byte(data))
+	newkeccak384 := keccak.New384()
+	newkeccak384.Write([]byte(data))
 
 	newkeccak256 := sha3.NewLegacyKeccak256()
 	newkeccak256.Write([]byte(data))
@@ -70,7 +76,11 @@ func main() {
 	fmt.Print("===\n")
 	fmt.Printf("TIGER192,3 => %x\n", xTiger.Sum(nil))
 	fmt.Print("===\n")
+	fmt.Printf("KECCAK224 => %x\n", newkeccak224.Sum(nil))
+	fmt.Print("===\n")
 	fmt.Printf("KECCAK256 => %x\n", newkeccak256.Sum(nil))
+	fmt.Print("===\n")
+	fmt.Printf("KECCAK384 => %x\n", newkeccak384.Sum(nil))
 	fmt.Print("===\n")
 	fmt.Printf("KECCAK512 => %x\n", newkeccak512.Sum(nil))
 	fmt.Print("===\n")
