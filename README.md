@@ -4,11 +4,11 @@
 
 checksumfile.go @ Run and use.
 
-- length bytes
-- **Binary.**
+### Binary ###
 - base32
 - base64
-- **Hash algorithm.**
+
+### Hash algorithm ###
 - tiger192,3
 - keccak256
 - keccak512
@@ -36,10 +36,11 @@ checksumfile.go @ Run and use.
 
 checksummess.go @ Run and use.
 
-- **Binary.**
+### Binary ###
 - base32
 - base64
-- **Hash algorithm.**
+
+### Hash algorithm ###
 - tiger192,3
 - keccak256
 - keccak512
