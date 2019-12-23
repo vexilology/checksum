@@ -14,6 +14,7 @@ import (
 	"crypto/sha256"
 	"crypto/sha512"
 	"golang.org/x/crypto/md4"
+	"golang.org/x/crypto/blake2s"
 	"golang.org/x/crypto/blake2b"
 	"golang.org/x/crypto/ripemd160"
 	"golang.org/x/crypto/sha3"
@@ -59,6 +60,8 @@ func main() {
 	BASE32 := base32.StdEncoding.EncodeToString([]byte(data))
 	BASE64 := base64.StdEncoding.EncodeToString([]byte(data))
 
+	BLAKE2S256 := fmt.Sprintf("%x", blake2s.Sum256([]byte(data)))
+
 	BLAKE2B256 := fmt.Sprintf("%x", blake2b.Sum256([]byte(data)))
 	BLAKE2B384 := fmt.Sprintf("%x", blake2b.Sum384([]byte(data)))
 	BLAKE2B512 := fmt.Sprintf("%x", blake2b.Sum512([]byte(data)))
@@ -94,6 +97,8 @@ func main() {
 	fmt.Println("CRC32 =>", secondCRC32)
 	fmt.Print("===\n")
 	fmt.Println("ADLER32 =>", secondADLER32)
+	fmt.Print("===\n")
+	fmt.Println("BLAKE2S-256 =>", BLAKE2S256)
 	fmt.Print("===\n")
 	fmt.Println("BLAKE2B-256 =>", BLAKE2B256)
 	fmt.Print("===\n")

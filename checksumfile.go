@@ -14,6 +14,7 @@ import (
 	"os"
 	"strconv"
 	"golang.org/x/crypto/md4"
+	"golang.org/x/crypto/blake2s"
 	"golang.org/x/crypto/blake2b"
 	"golang.org/x/crypto/ripemd160"
 	"golang.org/x/crypto/sha3"
@@ -76,6 +77,8 @@ func main() {
 	fmt.Println("CRC32 =>", secondcrc32)
 	fmt.Print("===\n")
 	fmt.Println("ADLER32 =>", secondadler32)
+	fmt.Print("===\n")
+	fmt.Printf("BLAKE2S-256 => %x\n", blake2s.Sum256(data))
 	fmt.Print("===\n")
 	fmt.Printf("BLAKE2B-256 => %x\n", blake2b.Sum256(data))
 	fmt.Print("===\n")
