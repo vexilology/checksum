@@ -10,7 +10,9 @@ checksumfile.go @ Run and use.
 
 ### Hash algorithm ###
 - tiger192,3
+- keccak224
 - keccak256
+- keccak384
 - keccak512
 - crc32
 - adler32
@@ -44,7 +46,9 @@ checksummess.go @ Run and use.
 
 ### Hash algorithm ###
 - tiger192,3
+- keccak224
 - keccak256
+- keccak384
 - keccak512
 - crc32
 - adler32
