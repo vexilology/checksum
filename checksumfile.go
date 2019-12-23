@@ -35,6 +35,11 @@ func main() {
 		panic(err)
 	}
 
+	newshake128 := keccak.NewSHAKE128(32)
+	newshake128.Write([]byte(data))
+	newshake256 := keccak.NewSHAKE256(64)
+	newshake256.Write([]byte(data))
+
 	newkeccak224 := keccak.New224()
 	newkeccak224.Write([]byte(data))
 	newkeccak384 := keccak.New384()
@@ -75,6 +80,10 @@ func main() {
 	fmt.Println("______Hash algorithm______")
 	fmt.Print("===\n")
 	fmt.Printf("TIGER192,3 => %x\n", xTiger.Sum(nil))
+	fmt.Print("===\n")
+	fmt.Printf("SHAKE128-256 => %x\n", newshake128.Sum(nil))
+	fmt.Print("===\n")
+	fmt.Printf("SHAKE256-512 => %x\n", newshake256.Sum(nil))
 	fmt.Print("===\n")
 	fmt.Printf("KECCAK224 => %x\n", newkeccak224.Sum(nil))
 	fmt.Print("===\n")

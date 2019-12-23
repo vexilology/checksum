@@ -32,6 +32,12 @@ func main() {
 		data = scanner.Text()
 	}
 
+	firstShake128 := keccak.NewSHAKE128(32)
+	firstShake128.Write([]byte(data))
+	secondShake128 := fmt.Sprintf("%x", firstShake128.Sum(nil))
+	firstShake256 := keccak.NewSHAKE256(64)
+	firstShake256.Write([]byte(data))
+	secondShake256 := fmt.Sprintf("%x", firstShake256.Sum(nil))
 
 	newkeccak224 := keccak.New224()
 	newkeccak224.Write([]byte(data))
@@ -98,6 +104,10 @@ func main() {
 	fmt.Println("______Hash algorithm______")
 	fmt.Print("===\n")
 	fmt.Println("TIGER192,3 =>", secondTiger)
+	fmt.Print("===\n")
+	fmt.Println("SHAKE128-256 =>", secondShake128)
+	fmt.Print("===\n")
+	fmt.Println("SHAKE256-512 =>", secondShake256)
 	fmt.Print("===\n")
 	fmt.Println("KECCAK224 =>", lastkeccak224)
 	fmt.Print("===\n")
