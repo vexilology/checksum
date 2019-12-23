@@ -5,10 +5,10 @@
 checksumfile.go @ Run and use.
 
 - length bytes
-- **Binary**
+- **______Binary______**
 - base32
 - base64
-- **Hash algorithm**
+- **______Hash algorithm______**
 - tiger192,3
 - keccak256
 - keccak512
@@ -24,6 +24,8 @@ checksumfile.go @ Run and use.
 - sha256
 - sha384
 - sha512
+- sha512_224
+- sha512_256
 - sha3-224
 - sha3-256
 - sha3-384
@@ -34,10 +36,10 @@ checksumfile.go @ Run and use.
 
 checksummess.go @ Run and use.
 
-- **Binary**
+- **______Binary______**
 - base32
 - base64
-- **Hash algorithm**
+- **______Hash algorithm______**
 - tiger192,3
 - keccak256
 - keccak512
@@ -53,6 +55,8 @@ checksummess.go @ Run and use.
 - sha256
 - sha384
 - sha512
+- sha512_224
+- sha512_256
 - sha3-224
 - sha3-256
 - sha3-384
