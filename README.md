@@ -10,6 +10,8 @@ checksumfile.go @ Run and use.
 
 ### Hash algorithm ###
 - tiger192,3
+- SHAKE128-256
+- SHAKE256-512
 - keccak224
 - keccak256
 - keccak384
@@ -46,6 +48,8 @@ checksummess.go @ Run and use.
 
 ### Hash algorithm ###
 - tiger192,3
+- SHAKE128-256
+- SHAKE256-512
 - keccak224
 - keccak256
 - keccak384
