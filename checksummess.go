@@ -7,6 +7,7 @@ import (
 	"os"
 	"encoding/base32"
 	"encoding/base64"
+	"hash/fnv"
 	"hash/crc32"
 	"hash/adler32"
 	"crypto/md5"
@@ -94,6 +95,26 @@ func main() {
 	firstTiger.Write([]byte(data))
 	secondTiger := fmt.Sprintf("%x", firstTiger.Sum(nil))
 
+	fnv32 := fnv.New32()
+	fnv32.Write([]byte(data))
+	fnv32last := fmt.Sprintf("%x", fnv32.Sum(nil))
+	fnv64 := fnv.New64()
+	fnv64.Write([]byte(data))
+	fnv64last := fmt.Sprintf("%x", fnv64.Sum(nil))
+	fnv128 := fnv.New128()
+	fnv128.Write([]byte(data))
+	fnv128last := fmt.Sprintf("%x", fnv128.Sum(nil))
+
+	fnv32a := fnv.New32a()
+	fnv32a.Write([]byte(data))
+	fnv32alast := fmt.Sprintf("%x", fnv32a.Sum(nil))
+	fnv64a := fnv.New64a()
+	fnv64a.Write([]byte(data))
+	fnv64alast := fmt.Sprintf("%x", fnv64a.Sum(nil))
+	fnv128a := fnv.New128a()
+	fnv128a.Write([]byte(data))
+	fnv128alast := fmt.Sprintf("%x", fnv128a.Sum(nil))
+
 	fmt.Print("-----------------------\n")
 	fmt.Println("______Binary______")
 	fmt.Print("===\n")
@@ -156,4 +177,16 @@ func main() {
 	fmt.Println("SHA3-384 =>", SHA3_384)
 	fmt.Print("===\n")
 	fmt.Println("SHA3-512 =>", SHA3_512)
+	fmt.Print("===\n")
+	fmt.Println("FNV1-32 =>", fnv32last)
+	fmt.Print("===\n")
+	fmt.Println("FNV1-62 =>", fnv64last)
+	fmt.Print("===\n")
+	fmt.Println("FNV1-128 =>", fnv128last)
+	fmt.Print("===\n")
+	fmt.Println("FNV1a-32 =>", fnv32alast)
+	fmt.Print("===\n")
+	fmt.Println("FNV1a-64 =>", fnv64alast)
+	fmt.Print("===\n")
+	fmt.Println("FNV1a-128 =>", fnv128alast)
 }
