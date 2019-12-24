@@ -25,6 +25,7 @@ checksumfile.go @ Run and use.
 - blake2b-384
 - blake2b-512
 - ripemd160
+- md2
 - md4
 - md5
 - sha1
@@ -71,6 +72,7 @@ checksummess.go @ Run and use.
 - blake2b-384
 - blake2b-512
 - ripemd160
+- md2
 - md4
 - md5
 - sha1
