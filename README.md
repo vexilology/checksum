@@ -17,6 +17,8 @@ checksumfile.go @ Run and use.
 - keccak384
 - keccak512
 - crc32
+- crc64-ecma
+- crc64-iso
 - adler32
 - blake2s-256
 - blake2b-256
@@ -61,6 +63,8 @@ checksummess.go @ Run and use.
 - keccak384
 - keccak512
 - crc32
+- crc64-ecma
+- crc64-iso
 - adler32
 - blake2s-256
 - blake2b-256
