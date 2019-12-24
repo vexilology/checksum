@@ -5,6 +5,7 @@ import (
 	"encoding/base32"
 	"encoding/base64"
 	"hash/crc32"
+	"hash/crc64"
 	"hash/adler32"
 	"hash/fnv"
 	"crypto/md5"
@@ -53,6 +54,11 @@ func main() {
 
 	firstcrc32 := crc32.ChecksumIEEE([]byte(data))
 	secondcrc32 := strconv.FormatUint(uint64(firstcrc32), 16)
+
+	crc64ecma := crc64.New(crc64.MakeTable(crc64.ECMA))
+	crc64ecma.Write([]byte(data))
+	crc64iso := crc64.New(crc64.MakeTable(crc64.ISO))
+	crc64iso.Write([]byte(data))
 
 	firstadler32 := adler32.Checksum([]byte(data))
 	secondadler32 := strconv.FormatUint(uint64(firstadler32), 16)
@@ -109,6 +115,10 @@ func main() {
 	fmt.Printf("KECCAK512 => %x\n", newkeccak512.Sum(nil))
 	fmt.Print("===\n")
 	fmt.Println("CRC32 =>", secondcrc32)
+	fmt.Print("===\n")
+	fmt.Printf("CRC64-ecma => %x\n", crc64ecma.Sum(nil))
+	fmt.Print("===\n")
+	fmt.Printf("CRC64-iso => %x\n", crc64iso.Sum(nil))
 	fmt.Print("===\n")
 	fmt.Println("ADLER32 =>", secondadler32)
 	fmt.Print("===\n")
