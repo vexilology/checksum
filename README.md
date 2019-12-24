@@ -10,8 +10,8 @@ checksumfile.go @ Run and use.
 
 ### Hash algorithm ###
 - tiger192,3
-- SHAKE128-256
-- SHAKE256-512
+- shake128-256
+- shake256-512
 - keccak224
 - keccak256
 - keccak384
@@ -36,6 +36,12 @@ checksumfile.go @ Run and use.
 - sha3-256
 - sha3-384
 - sha3-512
+- fnv1-32
+- fnv1-64
+- fnv1-128
+- fnv1a-32
+- fnv1a-64
+- fnv1a-128
 ------------------
 
 ### Hash generator for text. ###
@@ -48,8 +54,8 @@ checksummess.go @ Run and use.
 
 ### Hash algorithm ###
 - tiger192,3
-- SHAKE128-256
-- SHAKE256-512
+- shake256-512
+- shake512-512
 - keccak224
 - keccak256
 - keccak384
@@ -74,4 +80,10 @@ checksummess.go @ Run and use.
 - sha3-256
 - sha3-384
 - sha3-512
+- fnv1-32
+- fnv1-64
+- fnv1-128
+- fnv1a-32
+- fnv1a-64
+- fnv1a-128
 ------------------
