@@ -22,6 +22,7 @@ import (
 	"golang.org/x/crypto/sha3"
 	"github.com/cxmcc/tiger"
 	"github.com/ebfe/keccak"
+	"github.com/htruong/go-md2"
 )
 
 func main() {
@@ -66,6 +67,8 @@ func main() {
 	xbase32 := base32.StdEncoding.EncodeToString(data)
 	xbase64 := base64.StdEncoding.EncodeToString(data)
 
+	xMD2 := md2.New()
+	xMD2.Write([]byte(data))
 	xMD4 := md4.New()
 	xMD4.Write([]byte(data))
 
@@ -131,6 +134,8 @@ func main() {
 	fmt.Printf("BLAKE2B-512 => %x\n", blake2b.Sum512(data))
 	fmt.Print("===\n")
 	fmt.Printf("RIPEMD160 => %x\n", xRIPEMD160.Sum(nil))
+	fmt.Print("===\n")
+	fmt.Printf("MD2 => %x\n", xMD2.Sum([]byte(nil)))
 	fmt.Print("===\n")
 	fmt.Printf("MD4 => %x\n", xMD4.Sum([]byte(nil)))
 	fmt.Print("===\n")

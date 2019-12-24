@@ -22,6 +22,7 @@ import (
 	"golang.org/x/crypto/sha3"
 	"github.com/cxmcc/tiger"
 	"github.com/ebfe/keccak"
+	"github.com/htruong/go-md2"
 )
 
 func main() {
@@ -68,6 +69,9 @@ func main() {
 	firstADLER32 := adler32.Checksum([]byte(data))
 	secondADLER32 := strconv.FormatUint(uint64(firstADLER32), 16)
 
+	firstmd2 := md2.New()
+	firstmd2.Write([]byte(data))
+	secondmd2 := fmt.Sprintf("%x", firstmd2.Sum([]byte(nil)))
 	firstMD4 := md4.New()
 	firstMD4.Write([]byte(data))
 	secondMD4 := fmt.Sprintf("%x", firstMD4.Sum([]byte(nil)))
@@ -163,6 +167,8 @@ func main() {
 	fmt.Println("BLAKE2B-512 =>", BLAKE2B512)
 	fmt.Print("===\n")
 	fmt.Println("RIPEMD160 =>", secondRIPEMD160)
+	fmt.Print("===\n")
+	fmt.Println("MD2 =>", secondmd2)
 	fmt.Print("===\n")
 	fmt.Println("MD4 =>", secondMD4)
 	fmt.Print("===\n")
