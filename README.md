@@ -6,8 +6,8 @@ checksumfile.go | checksummess.go @ Run and use.
 
 ### Binary
 
-| base32 |
 | ------ |
+| base32 |
 | base64 |
 
 ### Hash algorithms
