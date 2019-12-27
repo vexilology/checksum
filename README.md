@@ -6,14 +6,16 @@ checksumfile.go | checksummess.go @ Run and use.
 
 ### Binary
 
-| ------ |
-| base32 |
-| base64 |
+| Algorithm |
+| --------- |
+| base32    |
+| base64    |
 
 ### Hash algorithms
 
-| tiger192,3      |  192 - bit    |
+| Algorithm       | Digest sizes  |
 | --------------- | ------------- |
+| tiger192,3      |  192 - bit    |
 | shake128-256    |  256 - bit    |
 | shake256-512    |  512 - bit    |
 | keccak224       |  224 - bit    |
