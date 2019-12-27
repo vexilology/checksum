@@ -1,17 +1,20 @@
-# fast checksum
-------------------
+<div align="center">
+    <p align="center"><img src="https://imgur.com/9OqtyKd.jpg"></p>
+    <h1>Fast Checksum.</h1>
+</div>
+
 ### Hash generator for file | string.
 
 checksumfile.go | checksummess.go @ Run and use.
 
-### Binary
+### Binary.
 
 | Algorithm |
 | --------- |
 | base32    |
 | base64    |
 
-### Hash algorithms
+### Hash algorithms.
 
 | Algorithm       | Digest sizes  |
 | --------------- | ------------- |
