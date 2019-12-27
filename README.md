@@ -6,14 +6,13 @@ checksumfile.go | checksummess.go @ Run and use.
 
 ### Binary
 
-|--------|
 | base32 |
+| ------ |
 | base64 |
-|--------|
 
 ### Hash algorithms
 
-| --------------- | -------------:|
+| --------------- | ------------- |
 | tiger192,3      |  192 - bit    |
 | shake128-256    |  256 - bit    |
 | shake256-512    |  512 - bit    |
@@ -50,4 +49,3 @@ checksumfile.go | checksummess.go @ Run and use.
 | fnv1a-32        |  32  - bit    |
 | fnv1a-64        |  64  - bit    |
 | fnv1a-128       |  128 - bit    |
-|---------------- | -------------:|
