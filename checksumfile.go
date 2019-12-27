@@ -117,7 +117,7 @@ func main() {
 	fmt.Print("===\n")
 	fmt.Printf("KECCAK512 => %x\n", newkeccak512.Sum(nil))
 	fmt.Print("===\n")
-	fmt.Println("CRC32 =>", secondcrc32)
+	fmt.Println("CRC32-ieee =>", secondcrc32)
 	fmt.Print("===\n")
 	fmt.Printf("CRC64-ecma => %x\n", crc64ecma.Sum(nil))
 	fmt.Print("===\n")

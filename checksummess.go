@@ -150,7 +150,7 @@ func main() {
 	fmt.Print("===\n")
 	fmt.Println("KECCAK512 =>", lastkeccak512)
 	fmt.Print("===\n")
-	fmt.Println("CRC32 =>", secondCRC32)
+	fmt.Println("CRC32-ieee =>", secondCRC32)
 	fmt.Print("===\n")
 	fmt.Println("CRC64-ecma =>", secondCRC64ecma)
 	fmt.Print("===\n")

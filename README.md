@@ -16,7 +16,7 @@ checksumfile.go @ Run and use.
 - keccak256
 - keccak384
 - keccak512
-- crc32
+- crc32-ieee
 - crc64-ecma
 - crc64-iso
 - adler32
@@ -63,7 +63,7 @@ checksummess.go @ Run and use.
 - keccak256
 - keccak384
 - keccak512
-- crc32
+- crc32-ieee
 - crc64-ecma
 - crc64-iso
 - adler32
