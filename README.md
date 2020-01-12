@@ -2,6 +2,10 @@
 
 checksumfile.go | checksummess.go @ Run and use.
 
+### Other
+
+->> Length bytes(only checksumfile.go)
+
 ### Binary.
 
 | Algorithm |
