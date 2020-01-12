@@ -1,19 +1,19 @@
-### Hash generator for file | string.
+### Hash generator for file | string
 
 checksumfile.go | checksummess.go @ Run and use.
 
 ### Other
 
-->> Length bytes(only checksumfile.go)
+--> Length bytes(only checksumfile.go)
 
-### Binary.
+### Binary
 
 | Algorithm |
 | --------- |
 | base32    |
 | base64    |
 
-### Hash algorithms.
+### Hash algorithms
 
 | Algorithm       | Digest sizes  |
 | --------------- | ------------- |
