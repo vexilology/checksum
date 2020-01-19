@@ -25,14 +25,22 @@ import (
 	"github.com/htruong/go-md2"
 )
 
+var data string
+
+func check(err error) {
+	if err != nil {
+		panic(err)
+	}
+}
+
 func main() {
-
-	var data string
-
-	fmt.Print("Enter your message: ")
 	scanner := bufio.NewScanner(os.Stdin)
-	if scanner.Scan() {
+	data := ""
+	for data == "" {
+		fmt.Print("Enter your message: ")
+		scanner.Scan()
 		data = scanner.Text()
+		check(scanner.Err())
 	}
 
 	firstShake128 := keccak.NewSHAKE128(32)

@@ -26,15 +26,14 @@ import (
 )
 
 func main() {
-
 	if len(os.Args) < 2 {
-        fmt.Println("File not found. Try again ---> go run checksumfile.go [FILENAME]")
-        return
-    }
+		fmt.Print("File not found. Try again ---> go run checksumfile.go [FILENAME]\n")
+		return
+	}
 
 	data, err := ioutil.ReadFile(os.Args[1])
 
-	if err !=  nil {
+	if err != nil {
 		panic(err)
 	}
 
