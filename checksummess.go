@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"bufio"
 	"os"
+	"encoding/ascii85"
 	"encoding/base32"
 	"encoding/base64"
 	"hash/fnv"
@@ -93,6 +94,9 @@ func main() {
 	SHA512_224 := fmt.Sprintf("%x", sha512.Sum512_224([]byte(data)))
 	SHA512_256 := fmt.Sprintf("%x", sha512.Sum512_256([]byte(data)))
 
+	ASCII85_first := make([]byte, 25, 25)
+	ascii85.Encode(ASCII85_first, []byte(data))
+	ASCII85 := string(ASCII85_first)
 	BASE32 := base32.StdEncoding.EncodeToString([]byte(data))
 	BASE64 := base64.StdEncoding.EncodeToString([]byte(data))
 
@@ -137,6 +141,8 @@ func main() {
 
 	fmt.Print("-----------------------\n")
 	fmt.Println("______Binary______")
+	fmt.Print("===\n")
+	fmt.Println("ASCII85 =>", ASCII85)
 	fmt.Print("===\n")
 	fmt.Println("BASE32 =>", BASE32)
 	fmt.Print("===\n")

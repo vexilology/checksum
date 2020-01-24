@@ -4,16 +4,28 @@ checksumfile.go | checksummess.go @ Run and use.
 
 ### Other
 
---> Length bytes(only checksumfile.go)
+--> Length bytes (only checksumfile.go)
 
 ### Binary
+
+-->	FILE
 
 | Algorithm |
 | --------- |
 | base32    |
 | base64    |
 
+--> STRING
+
+| Algorithm |
+| --------- |
+| ascii85	|
+| base32    |
+| base64    |
+
 ### Hash algorithms
+
+--> ALL
 
 | Algorithm       | Digest sizes  |
 | --------------- | ------------- |
