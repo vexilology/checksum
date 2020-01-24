@@ -1,21 +1,23 @@
-### Hash generator for file | string
+### Hash generator
 
 checksumfile.go | checksummess.go @ Run and use.
 
 ### Other
 
---> Length bytes (only checksumfile.go)
+--> [checksumfile.go]
+
+	-- Length bytes
 
 ### Binary
 
--->	FILE
+-->	[checksumfile.go]
 
 | Algorithm |
 | --------- |
 | base32    |
 | base64    |
 
---> STRING
+--> [checksummess.go]
 
 | Algorithm |
 | --------- |
@@ -25,7 +27,7 @@ checksumfile.go | checksummess.go @ Run and use.
 
 ### Hash algorithms
 
---> ALL
+--> [ALL]
 
 | Algorithm       | Digest sizes  |
 | --------------- | ------------- |
@@ -53,8 +55,8 @@ checksumfile.go | checksummess.go @ Run and use.
 | sha256          |  256 - bit    |
 | sha384          |  384 - bit    |
 | sha512          |  512 - bit    |
-| sha512_224      |  224 - bit    |
-| sha512_256      |  256 - bit    |
+| sha512-224      |  224 - bit    |
+| sha512-256      |  256 - bit    |
 | sha3-224        |  224 - bit    |
 | sha3-256        |  256 - bit    |
 | sha3-384        |  384 - bit    |
