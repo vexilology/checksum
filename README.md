@@ -1,7 +1,12 @@
-### Hash generator
+<div align="center">
+	<h1>Hash generator</h1>
+</div>
 
-checksumfile.go | checksummess.go @ Run and use.
+checksumfile.go || checksummess.go
 
+	-- builds file
+	-- follow the steps in the console 
+ 
 ### Other
 
 --> [checksumfile.go]
