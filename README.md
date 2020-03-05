@@ -1,28 +1,32 @@
 <div align="center">
-	<h1>Hash generator</h1>
+	<h1>hash1sum</h1>
 </div>
 
 checksumfile.go || checksummess.go
 
-	-- builds file
-	-- follow the steps in the console 
+	- go get github.com/cxmcc/tiger
+	- go get github.com/ebfe/keccak
+	- go get github.com/htruong/go-md2
+	- go get golang.org/x/crypto/blake2b
+	- builds file
+	- follow the steps in the console 
  
 ### Other
 
---> [checksumfile.go]
+-> [checksumfile.go]
 
-	-- Length bytes
+	- Length bytes
 
 ### Binary
 
--->	[checksumfile.go]
+->	[checksumfile.go]
 
 | Algorithm |
 | --------- |
 | base32    |
 | base64    |
 
---> [checksummess.go]
+-> [checksummess.go]
 
 | Algorithm |
 | --------- |
@@ -32,7 +36,7 @@ checksumfile.go || checksummess.go
 
 ### Hash algorithms
 
---> [ALL]
+-> [ALL]
 
 | Algorithm       | Digest sizes  |
 | --------------- | ------------- |
