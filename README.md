@@ -1,14 +1,9 @@
-<div align="center">
-	<h1>HashGoSum</h1>
-</div>
-
-  info:
-  - testing on Ubuntu 16.04 - go version go1.13.4 linux/amd64
-  - need default go library 'crypto' -> go get golang.org/x/crypto/blake2b
-  how to use:
-  - go run file.go [FILENAME]
+### Info
+  - Testing on Ubuntu 16.04 - go version go1.13.4 linux/amd64.
+  - Need default go library 'crypto' -> go get golang.org/x/crypto/blake2b.
+  - go run file.go [filenama]
   - go run message.go
-  - or build a file and use the methods described above
+  - Or build a file and use the methods described above.
 
 ### Binary
 
@@ -58,3 +53,9 @@
 | fnv1a-32        |  32  - bit    |
 | fnv1a-64        |  64  - bit    |
 | fnv1a-128       |  128 - bit    |
+
+
+### Thanks
+* [cxmcc](https://github.com/cxmcc/)
+* [htruong](https://github.com/htruong/)
+* [ebfe](https://github.com/ebfe/)
