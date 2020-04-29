@@ -20,9 +20,9 @@ import (
 	"golang.org/x/crypto/blake2b"
 	"golang.org/x/crypto/ripemd160"
 	"golang.org/x/crypto/sha3"
-	"github.com/cxmcc/tiger"
-	"github.com/ebfe/keccak"
-	"github.com/htruong/go-md2"
+	"./tiger"
+	"./keccak"
+	"./md2"
 )
 
 func main() {
@@ -94,13 +94,13 @@ func main() {
 	fmt.Print("-----------------------\n")
 	fmt.Printf("Length => %d bytes\n", len(data))
 	fmt.Print("-----------------------\n")
-	fmt.Println("______Binary______")
+	fmt.Println("**Binary**")
 	fmt.Print("===\n")
 	fmt.Println("BASE32 =>", xbase32)
 	fmt.Print("===\n")
 	fmt.Println("BASE64 =>", xbase64)
 	fmt.Print("===\n")
-	fmt.Println("______Hash algorithm______")
+	fmt.Println("**Hash algorithm**")
 	fmt.Print("===\n")
 	fmt.Printf("TIGER192,3 => %x\n", xTiger.Sum(nil))
 	fmt.Print("===\n")

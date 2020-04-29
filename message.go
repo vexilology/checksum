@@ -21,9 +21,9 @@ import (
 	"golang.org/x/crypto/blake2b"
 	"golang.org/x/crypto/ripemd160"
 	"golang.org/x/crypto/sha3"
-	"github.com/cxmcc/tiger"
-	"github.com/ebfe/keccak"
-	"github.com/htruong/go-md2"
+	"./tiger"
+	"./keccak"
+	"./md2"
 )
 
 var data string
@@ -140,7 +140,7 @@ func main() {
 	fnv128alast := fmt.Sprintf("%x", fnv128a.Sum(nil))
 
 	fmt.Print("-----------------------\n")
-	fmt.Println("______Binary______")
+	fmt.Println("**Binary**")
 	fmt.Print("===\n")
 	fmt.Println("ASCII85 =>", ASCII85)
 	fmt.Print("===\n")
@@ -148,7 +148,7 @@ func main() {
 	fmt.Print("===\n")
 	fmt.Println("BASE64 =>", BASE64)
 	fmt.Print("===\n")
-	fmt.Println("______Hash algorithm______")
+	fmt.Println("**Hash algorithms**")
 	fmt.Print("===\n")
 	fmt.Println("TIGER192,3 =>", secondTiger)
 	fmt.Print("===\n")

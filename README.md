@@ -1,42 +1,24 @@
 <div align="center">
-	<h1>hash1sum</h1>
+	<h1>HashGoSum</h1>
 </div>
 
-checksumfile.go || checksummess.go
-
-	- go get github.com/cxmcc/tiger
-	- go get github.com/ebfe/keccak
-	- go get github.com/htruong/go-md2
-	- go get golang.org/x/crypto/blake2b
-	- builds file
-	- follow the steps in the console 
- 
-### Other
-
--> [checksumfile.go]
-
-	- Length bytes
+  info:
+  - testing on Ubuntu 16.04 - go version go1.13.4 linux/amd64
+  - need default go library 'crypto' -> go get golang.org/x/crypto/blake2b
+  how to use:
+  - go run file.go [FILENAME]
+  - go run message.go
+  - or build a file and use the methods described above
 
 ### Binary
 
-->	[checksumfile.go]
-
 | Algorithm |
 | --------- |
-| base32    |
-| base64    |
-
--> [checksummess.go]
-
-| Algorithm |
-| --------- |
-| ascii85	|
+| ascii85	  |
 | base32    |
 | base64    |
 
 ### Hash algorithms
-
--> [ALL]
 
 | Algorithm       | Digest sizes  |
 | --------------- | ------------- |
