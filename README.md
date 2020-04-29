@@ -1,9 +1,9 @@
 ### Info
-  - Testing on Ubuntu 16.04 - go version go1.13.4 linux/amd64.
-  - Need default go library 'crypto' -> go get golang.org/x/crypto/blake2b.
-  - go run file.go [filenama]
+  - Testing on Ubuntu 16.04 -- go version go1.13.4 linux/amd64.
+  - Install default golang library "crypto".
+  - Build a file and use or:
+  - go run file.go [filename]
   - go run message.go
-  - Or build a file and use the methods described above.
 
 ### Binary
 
