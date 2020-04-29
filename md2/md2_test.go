@@ -1,7 +1,3 @@
-// Copyright 2009 The Go Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style
-// license that can be found in the LICENSE file.
-
 package md2
 
 import (
@@ -32,10 +28,8 @@ func TestGolden(t *testing.T) {
 			if j < 2 {
 				io.WriteString(c, g.in)
 			} else {
-				//fmt.Printf("Testing the first half\n")
 				io.WriteString(c, g.in[0:len(g.in)/2])
 				c.Sum(nil)
-				//fmt.Printf("Testing the second half\n")
 				io.WriteString(c, g.in[len(g.in)/2:])
 			}
 			s := fmt.Sprintf("%x", c.Sum(nil))
