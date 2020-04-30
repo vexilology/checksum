@@ -1,12 +1,12 @@
-### Info
-- Testing on Ubuntu 16.04 && go version go1.13.4 linux/amd64.
+## Info
+> Testing on Ubuntu 16.04 **&&** go version go1.13.4 linux/amd64.
 - Install default golang library "crypto".
   - https://github.com/golang/crypto
 - Build a file and use or:
   - go run file.go [filename]
   - go run message.go
 
-### Binary
+## Binary
 
 | Algorithm |
 | --------- |
@@ -14,7 +14,7 @@
 | base32    |
 | base64    |
 
-### Hash algorithms
+## Hash algorithms
 
 | Algorithm       | Digest sizes  |
 | --------------- | ------------- |
@@ -56,7 +56,7 @@
 | fnv1a-128       |  128 - bit    |
 
 
-### Thanks
+## Thanks
 * [cxmcc](https://github.com/cxmcc/)
 * [htruong](https://github.com/htruong/)
 * [ebfe](https://github.com/ebfe/)
