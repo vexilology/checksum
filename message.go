@@ -38,7 +38,9 @@ func main() {
 	scanner := bufio.NewScanner(os.Stdin)
 	data := ""
 	for data == "" {
-		fmt.Print("Enter your message: ")
+    fmt.Print("loading...")
+    fmt.Print("\n----------")
+		fmt.Print("\n> ")
 		scanner.Scan()
 		data = scanner.Text()
 		check(scanner.Err())
