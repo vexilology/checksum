@@ -1,12 +1,13 @@
-## Info
 > Testing on Ubuntu 16.04 **&&** go version go1.13.4 linux/amd64.
-- Install golang library **crypto**:
+
+# Start
+install golang library **crypto**:
   - https://github.com/golang/crypto
-- Build a file and use or:
+build a file and use or:
   - go run file.go [filename]
   - go run message.go
 
-## Binary
+# Binary
 
 | Algorithm |
 | --------- |
@@ -14,7 +15,7 @@
 | base32    |
 | base64    |
 
-## Hash algorithms
+# Hash algorithms
 
 | Algorithm       | Digest sizes  |
 | --------------- | ------------- |
