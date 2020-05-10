@@ -3,11 +3,12 @@
 # Start
 install golang library **crypto**:
   - https://github.com/golang/crypto
+------------------------------------
 build a file and use or:
   - go run file.go [filename]
   - go run message.go
 
-# Binary
+## Binary
 
 | Algorithm |
 | --------- |
@@ -15,7 +16,7 @@ build a file and use or:
 | base32    |
 | base64    |
 
-# Hash algorithms
+## Hash algorithms
 
 | Algorithm       | Digest sizes  |
 | --------------- | ------------- |
