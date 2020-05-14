@@ -1,10 +1,20 @@
-> Testing on Ubuntu 16.04 **&&** go version go1.13.4 linux/amd64.
---------------
-# Start
-- install golang library [`crypto`](https://github.com/golang/crypto)
-- build a file and use or:
-  - go run file.go [filename]
-  - go run message.go
+# hashgosum
+
+> Testing on Ubuntu 16.04
+> go version go1.13.4 linux/amd64.
+
+## Start
+
+```
+# need golang library **crypto**
+./install
+```
+
+```
+# now you can use it
+./run -m
+./run -f FILENAME
+```
 
 ## Binary
 
