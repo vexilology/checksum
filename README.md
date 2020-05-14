@@ -1,12 +1,11 @@
 # hashgosum
 
-> Testing on Ubuntu 16.04
-> go version go1.13.4 linux/amd64.
+> Testing on Ubuntu 16.04 && go1.13.4 linux/amd64.
 
 ## Start
 
 ```
-# need golang library **crypto**
+# need golang library crypto
 ./install
 ```
 
