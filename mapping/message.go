@@ -1,13 +1,10 @@
-package main
+package mapping
 
 import (
-  "strconv"
+  "os"
   "fmt"
   "bufio"
-  "os"
-  "encoding/ascii85"
-  "encoding/base32"
-  "encoding/base64"
+  "strconv"
   "hash/fnv"
   "hash/crc32"
   "hash/crc64"
@@ -16,17 +13,22 @@ import (
   "crypto/sha1"
   "crypto/sha256"
   "crypto/sha512"
+  "encoding/ascii85"
+  "encoding/base32"
+  "encoding/base64"
+
   "golang.org/x/crypto/md4"
   "golang.org/x/crypto/blake2s"
   "golang.org/x/crypto/blake2b"
   "golang.org/x/crypto/ripemd160"
   "golang.org/x/crypto/sha3"
-  "./tiger"
-  "./keccak"
-  "./md2"
+
+  "github.com/cxmcc/tiger"
+  "github.com/ebfe/keccak"
+  "github.com/htruong/go-md2"
 )
 
-var data string
+var msg string
 
 func check(err error) {
   if err != nil {
@@ -34,111 +36,96 @@ func check(err error) {
   }
 }
 
-func main() {
+func CheckMessage() {
   scanner := bufio.NewScanner(os.Stdin)
-  data := ""
-  for data == "" {
+  msg := ""
+  for msg == "" {
     fmt.Print("loading...")
     fmt.Print("\n----------")
     fmt.Print("\n> ")
     scanner.Scan()
-    data = scanner.Text()
+    msg = scanner.Text()
     check(scanner.Err())
   }
 
   firstShake128 := keccak.NewSHAKE128(32)
-  firstShake128.Write([]byte(data))
+  firstShake128.Write([]byte(msg))
   secondShake128 := fmt.Sprintf("%x", firstShake128.Sum(nil))
   firstShake256 := keccak.NewSHAKE256(64)
-  firstShake256.Write([]byte(data))
+  firstShake256.Write([]byte(msg))
   secondShake256 := fmt.Sprintf("%x", firstShake256.Sum(nil))
-
   newkeccak224 := keccak.New224()
-  newkeccak224.Write([]byte(data))
+  newkeccak224.Write([]byte(msg))
   lastkeccak224 := fmt.Sprintf("%x", newkeccak224.Sum(nil))
   newkeccak384 := keccak.New384()
-  newkeccak384.Write([]byte(data))
+  newkeccak384.Write([]byte(msg))
   lastkeccak384 := fmt.Sprintf("%x", newkeccak384.Sum(nil))
-
   newkeccak256 := sha3.NewLegacyKeccak256()
-  newkeccak256.Write([]byte(data))
+  newkeccak256.Write([]byte(msg))
   lastkeccak256 := fmt.Sprintf("%x", newkeccak256.Sum(nil))
   newkeccak512 := sha3.NewLegacyKeccak512()
-  newkeccak512.Write([]byte(data))
+  newkeccak512.Write([]byte(msg))
   lastkeccak512 := fmt.Sprintf("%x", newkeccak512.Sum(nil))
-
-  firstCRC32 := crc32.ChecksumIEEE([]byte(data))
+  firstCRC32 := crc32.ChecksumIEEE([]byte(msg))
   secondCRC32 := strconv.FormatUint(uint64(firstCRC32), 16)
-
   firstCRC64ecma := crc64.New(crc64.MakeTable(crc64.ECMA))
-  firstCRC64ecma.Write([]byte(data))
+  firstCRC64ecma.Write([]byte(msg))
   secondCRC64ecma := fmt.Sprintf("%x", firstCRC64ecma.Sum(nil))
   firstCRC64iso := crc64.New(crc64.MakeTable(crc64.ISO))
-  firstCRC64iso.Write([]byte(data))
+  firstCRC64iso.Write([]byte(msg))
   secondCRC64iso := fmt.Sprintf("%x", firstCRC64iso.Sum(nil))
-
-  firstADLER32 := adler32.Checksum([]byte(data))
+  firstADLER32 := adler32.Checksum([]byte(msg))
   secondADLER32 := strconv.FormatUint(uint64(firstADLER32), 16)
-
   firstmd2 := md2.New()
-  firstmd2.Write([]byte(data))
+  firstmd2.Write([]byte(msg))
   secondmd2 := fmt.Sprintf("%x", firstmd2.Sum([]byte(nil)))
   firstMD4 := md4.New()
-  firstMD4.Write([]byte(data))
+  firstMD4.Write([]byte(msg))
   secondMD4 := fmt.Sprintf("%x", firstMD4.Sum([]byte(nil)))
-  MD5 := fmt.Sprintf("%x", md5.Sum([]byte(data)))
-
-  SHA1 := fmt.Sprintf("%x", sha1.Sum([]byte(data)))
-  SHA224 := fmt.Sprintf("%x", sha256.Sum224([]byte(data)))
-  SHA256 := fmt.Sprintf("%x", sha256.Sum256([]byte(data)))
-  SHA384 := fmt.Sprintf("%x", sha512.Sum384([]byte(data)))
-  SHA512 := fmt.Sprintf("%x", sha512.Sum512([]byte(data)))
-  SHA512_224 := fmt.Sprintf("%x", sha512.Sum512_224([]byte(data)))
-  SHA512_256 := fmt.Sprintf("%x", sha512.Sum512_256([]byte(data)))
-
+  MD5 := fmt.Sprintf("%x", md5.Sum([]byte(msg)))
+  SHA1 := fmt.Sprintf("%x", sha1.Sum([]byte(msg)))
+  SHA224 := fmt.Sprintf("%x", sha256.Sum224([]byte(msg)))
+  SHA256 := fmt.Sprintf("%x", sha256.Sum256([]byte(msg)))
+  SHA384 := fmt.Sprintf("%x", sha512.Sum384([]byte(msg)))
+  SHA512 := fmt.Sprintf("%x", sha512.Sum512([]byte(msg)))
+  SHA512_224 := fmt.Sprintf("%x", sha512.Sum512_224([]byte(msg)))
+  SHA512_256 := fmt.Sprintf("%x", sha512.Sum512_256([]byte(msg)))
   ASCII85_first := make([]byte, 25, 25)
-  ascii85.Encode(ASCII85_first, []byte(data))
+  ascii85.Encode(ASCII85_first, []byte(msg))
   ASCII85 := string(ASCII85_first)
-  BASE32 := base32.StdEncoding.EncodeToString([]byte(data))
-  BASE64 := base64.StdEncoding.EncodeToString([]byte(data))
-
-  BLAKE2S256 := fmt.Sprintf("%x", blake2s.Sum256([]byte(data)))
-
-  BLAKE2B256 := fmt.Sprintf("%x", blake2b.Sum256([]byte(data)))
-  BLAKE2B384 := fmt.Sprintf("%x", blake2b.Sum384([]byte(data)))
-  BLAKE2B512 := fmt.Sprintf("%x", blake2b.Sum512([]byte(data)))
-
+  BASE32 := base32.StdEncoding.EncodeToString([]byte(msg))
+  BASE64 := base64.StdEncoding.EncodeToString([]byte(msg))
+  BLAKE2S256 := fmt.Sprintf("%x", blake2s.Sum256([]byte(msg)))
+  BLAKE2B256 := fmt.Sprintf("%x", blake2b.Sum256([]byte(msg)))
+  BLAKE2B384 := fmt.Sprintf("%x", blake2b.Sum384([]byte(msg)))
+  BLAKE2B512 := fmt.Sprintf("%x", blake2b.Sum512([]byte(msg)))
   firstRIPEMD160 := ripemd160.New()
-  firstRIPEMD160.Write([]byte(data))
+  firstRIPEMD160.Write([]byte(msg))
   secondRIPEMD160 := fmt.Sprintf("%x", firstRIPEMD160.Sum(nil))
-
-  SHA3_224 := fmt.Sprintf("%x", sha3.Sum224([]byte(data)))
-  SHA3_256 := fmt.Sprintf("%x", sha3.Sum256([]byte(data)))
-  SHA3_384 := fmt.Sprintf("%x", sha3.Sum384([]byte(data)))
-  SHA3_512 := fmt.Sprintf("%x", sha3.Sum512([]byte(data)))
-
+  SHA3_224 := fmt.Sprintf("%x", sha3.Sum224([]byte(msg)))
+  SHA3_256 := fmt.Sprintf("%x", sha3.Sum256([]byte(msg)))
+  SHA3_384 := fmt.Sprintf("%x", sha3.Sum384([]byte(msg)))
+  SHA3_512 := fmt.Sprintf("%x", sha3.Sum512([]byte(msg)))
   firstTiger := tiger.New()
-  firstTiger.Write([]byte(data))
+  firstTiger.Write([]byte(msg))
   secondTiger := fmt.Sprintf("%x", firstTiger.Sum(nil))
-
   fnv32 := fnv.New32()
-  fnv32.Write([]byte(data))
+  fnv32.Write([]byte(msg))
   fnv32last := fmt.Sprintf("%x", fnv32.Sum(nil))
   fnv64 := fnv.New64()
-  fnv64.Write([]byte(data))
+  fnv64.Write([]byte(msg))
   fnv64last := fmt.Sprintf("%x", fnv64.Sum(nil))
   fnv128 := fnv.New128()
-  fnv128.Write([]byte(data))
+  fnv128.Write([]byte(msg))
   fnv128last := fmt.Sprintf("%x", fnv128.Sum(nil))
-
   fnv32a := fnv.New32a()
-  fnv32a.Write([]byte(data))
+  fnv32a.Write([]byte(msg))
   fnv32alast := fmt.Sprintf("%x", fnv32a.Sum(nil))
   fnv64a := fnv.New64a()
-  fnv64a.Write([]byte(data))
+  fnv64a.Write([]byte(msg))
   fnv64alast := fmt.Sprintf("%x", fnv64a.Sum(nil))
   fnv128a := fnv.New128a()
-  fnv128a.Write([]byte(data))
+  fnv128a.Write([]byte(msg))
   fnv128alast := fmt.Sprintf("%x", fnv128a.Sum(nil))
 
   fmt.Print("-----------------------\n")

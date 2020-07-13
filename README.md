@@ -1,18 +1,24 @@
-# hashgosum
-
 > Testing on Ubuntu 16.04 && go1.13.4 linux/amd64.
 
 ## Start
 
 ```
-# need golang library crypto
-./install
+# need golang library crypto and other packages
+make install
 ```
 
 ```
 # now you can use it
-./run -m
-./run -f FILENAME
+make help
+make build
+
+hashgosum -m
+hashgosum -f=FILENAME
+
+or
+
+go run main.go -m
+go run main.go -f=FILENAME
 ```
 
 ## Binary
@@ -64,8 +70,3 @@
 | fnv1a-64        |  64  - bit    |
 | fnv1a-128       |  128 - bit    |
 
-
-## Thanks
-* [cxmcc](https://github.com/cxmcc/)
-* [htruong](https://github.com/htruong/)
-* [ebfe](https://github.com/ebfe/)

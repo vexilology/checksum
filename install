@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-echo "install go cryptography, wait..."
-echo "~~~~~~~~~~~~~~~~"
-
-go get -u golang.org/x/crypto
