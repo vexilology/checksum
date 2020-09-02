@@ -11,6 +11,7 @@ make install
 # now you can use it
 make help
 make build
+make fix
 
 hashgosum -m
 hashgosum -f=FILENAME
