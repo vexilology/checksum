@@ -5,7 +5,7 @@ help:
 
 build:
 	@echo "Building..."
-	go build -o hashgosum main.go
+	go build -o hashgosum hashgosum.go
 
 install:
 	@echo "Installing packages..."

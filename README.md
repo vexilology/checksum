@@ -20,8 +20,8 @@ hashgosum -f=FILENAME
 
 or
 
-go run main.go -m="Hello World"
-go run main.go -f=FILENAME
+go run hashgosum.go -m="Hello World"
+go run hashgosum.go -f=FILENAME
 ```
 
 ## Binary
@@ -76,4 +76,3 @@ go run main.go -f=FILENAME
 
 # TODO:
 - create tests
-- fix input string
