@@ -1,9 +1,10 @@
 package src
 
 import (
-  "os"
+  "io"
+  "strings"
+  "log"
   "fmt"
-  "bufio"
   "strconv"
   "hash/fnv"
   "hash/crc32"
@@ -28,24 +29,11 @@ import (
   "github.com/htruong/go-md2"
 )
 
-var msg string
-
-func check(err error) {
-  if err != nil {
-    panic(err)
-  }
-}
-
-func CheckMessage() {
-  scanner := bufio.NewScanner(os.Stdin)
-  msg := ""
-  for msg == "" {
-    fmt.Print("loading...")
-    fmt.Print("\n----------")
-    fmt.Print("\n> ")
-    scanner.Scan()
-    msg = scanner.Text()
-    check(scanner.Err())
+func CheckMessage(foundString string) string {
+  input_string := foundString
+  msg := make([]byte, len(foundString))
+  if _, err := io.ReadFull(strings.NewReader(input_string), msg); err != nil {
+    log.Fatal(err)
   }
 
   firstShake128 := keccak.NewSHAKE128(32)
@@ -143,13 +131,11 @@ func CheckMessage() {
   fnv128a.Write([]byte(msg))
   fnv128alast := fmt.Sprintf("%x", fnv128a.Sum(nil))
 
-  fmt.Print("-----------------------\n")
-  fmt.Println("*Binary*")
+  fmt.Println("-----------------------")
   fmt.Println("ASCII85 ::", ASCII85)
-  fmt.Println("BASE32 ::", BASE32)
-  fmt.Print("-----------------------\n")
-  fmt.Println("BASE64 ::", BASE64)
-  fmt.Println("*Hash algorithms*")
+  fmt.Println("BASE32  ::", BASE32)
+  fmt.Println("BASE64  ::", BASE64)
+  fmt.Println("-----------------------")
   fmt.Println("TIGER192,3 ::", secondTiger)
   fmt.Println("SHAKE128-256 ::", secondShake128)
   fmt.Println("SHAKE256-512 ::", secondShake256)
@@ -159,7 +145,7 @@ func CheckMessage() {
   fmt.Println("KECCAK512 ::", lastkeccak512)
   fmt.Println("CRC32-ieee ::", secondCRC32)
   fmt.Println("CRC64-ecma ::", secondCRC64ecma)
-  fmt.Println("CRC64-iso ::", secondCRC64iso)
+  fmt.Println("CRC64-iso  ::", secondCRC64iso)
   fmt.Println("ADLER32 ::", secondADLER32)
   fmt.Println("BLAKE2S-256 ::", BLAKE2S256)
   fmt.Println("BLAKE2B-256 ::", BLAKE2B256)
@@ -169,23 +155,24 @@ func CheckMessage() {
   fmt.Println("MD2 ::", secondmd2)
   fmt.Println("MD4 ::", secondMD4)
   fmt.Println("MD5 ::", MD5)
-  fmt.Println("SHA1 ::", SHA1)
+  fmt.Println("SHA1   ::", SHA1)
   fmt.Println("SHA224 ::", SHA224)
   fmt.Println("SHA256 ::", SHA256)
   fmt.Println("SHA384 ::", SHA384)
   fmt.Println("SHA512 ::", SHA512)
   fmt.Println("SHA512_224 ::", SHA512_224)
   fmt.Println("SHA512_256 ::", SHA512_256)
-  fmt.Println("SHA3-224 ::", SHA3_224)
-  fmt.Println("SHA3-256 ::", SHA3_256)
-  fmt.Println("SHA3-384 ::", SHA3_384)
-  fmt.Println("SHA3-512 ::", SHA3_512)
-  fmt.Println("FNV1-32 ::", fnv32last)
-  fmt.Println("FNV1-62 ::", fnv64last)
+  fmt.Println("SHA3-224   ::", SHA3_224)
+  fmt.Println("SHA3-256   ::", SHA3_256)
+  fmt.Println("SHA3-384   ::", SHA3_384)
+  fmt.Println("SHA3-512   ::", SHA3_512)
+  fmt.Println("FNV1-32  ::", fnv32last)
+  fmt.Println("FNV1-62  ::", fnv64last)
   fmt.Println("FNV1-128 ::", fnv128last)
-  fmt.Println("FNV1a-32 ::", fnv32alast)
-  fmt.Println("FNV1a-64 ::", fnv64alast)
+  fmt.Println("FNV1a-32  ::", fnv32alast)
+  fmt.Println("FNV1a-64  ::", fnv64alast)
   fmt.Println("FNV1a-128 ::", fnv128alast)
-  fmt.Print("-----------------------\n")
+  fmt.Println("-----------------------")
   fmt.Println("OK")
+  return foundString
 }

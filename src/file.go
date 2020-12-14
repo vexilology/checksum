@@ -27,7 +27,7 @@ import (
   "github.com/htruong/go-md2"
 )
 
-func CheckFile(foundFile string) {
+func CheckFile(foundFile string) string {
   fl, err := ioutil.ReadFile(foundFile)
   if err != nil {
     log.Fatal(err)
@@ -85,14 +85,12 @@ func CheckFile(foundFile string) {
   xFnv128a := fnv.New128a()
   xFnv128a.Write([]byte(fl))
 
-  fmt.Print("-----------------------\n")
+  fmt.Println("-----------------------")
   fmt.Printf("Length :: %d bytes\n", len(fl))
-  fmt.Print("-----------------------\n")
-  fmt.Println("*Binary*")
+  fmt.Println("-----------------------")
   fmt.Println("BASE32 ::", xbase32)
-  fmt.Print("-----------------------\n")
   fmt.Println("BASE64 ::", xbase64)
-  fmt.Println("*Hash algorithm*")
+  fmt.Println("-----------------------")
   fmt.Printf("TIGER192,3 :: %x\n", xTiger.Sum(nil))
   fmt.Printf("SHAKE128-256 :: %x\n", newshake128.Sum(nil))
   fmt.Printf("SHAKE256-512 :: %x\n", newshake256.Sum(nil))
@@ -102,7 +100,7 @@ func CheckFile(foundFile string) {
   fmt.Printf("KECCAK512 :: %x\n", newkeccak512.Sum(nil))
   fmt.Println("CRC32-ieee ::", secondcrc32)
   fmt.Printf("CRC64-ecma :: %x\n", crc64ecma.Sum(nil))
-  fmt.Printf("CRC64-iso :: %x\n", crc64iso.Sum(nil))
+  fmt.Printf("CRC64-iso  :: %x\n", crc64iso.Sum(nil))
   fmt.Println("ADLER32 ::", secondadler32)
   fmt.Printf("BLAKE2S-256 :: %x\n", blake2s.Sum256(fl))
   fmt.Printf("BLAKE2B-256 :: %x\n", blake2b.Sum256(fl))
@@ -112,7 +110,7 @@ func CheckFile(foundFile string) {
   fmt.Printf("MD2 :: %x\n", xMD2.Sum([]byte(nil)))
   fmt.Printf("MD4 :: %x\n", xMD4.Sum([]byte(nil)))
   fmt.Printf("MD5 :: %x\n", md5.Sum(fl))
-  fmt.Printf("SHA1 :: %x\n", sha1.Sum(fl))
+  fmt.Printf("SHA1   :: %x\n", sha1.Sum(fl))
   fmt.Printf("SHA224 :: %x\n", sha256.Sum224(fl))
   fmt.Printf("SHA256 :: %x\n", sha256.Sum256(fl))
   fmt.Printf("SHA384 :: %x\n", sha512.Sum384(fl))
@@ -123,12 +121,13 @@ func CheckFile(foundFile string) {
   fmt.Printf("SHA3-256 :: %x\n", sha3.Sum256(fl))
   fmt.Printf("SHA3-384 :: %x\n", sha3.Sum384(fl))
   fmt.Printf("SHA3-512 :: %x\n", sha3.Sum512(fl))
-  fmt.Printf("FNV1-32 :: %x\n", xFnv32.Sum(nil))
-  fmt.Printf("FNV1-64 :: %x\n", xFnv64.Sum(nil))
+  fmt.Printf("FNV1-32  :: %x\n", xFnv32.Sum(nil))
+  fmt.Printf("FNV1-64  :: %x\n", xFnv64.Sum(nil))
   fmt.Printf("FNV1-128 :: %x\n", xFnv128.Sum(nil))
-  fmt.Printf("FNV1a-32 :: %x\n", xFnv32a.Sum(nil))
-  fmt.Printf("FNV1a-64 :: %x\n", xFnv64a.Sum(nil))
+  fmt.Printf("FNV1a-32  :: %x\n", xFnv32a.Sum(nil))
+  fmt.Printf("FNV1a-64  :: %x\n", xFnv64a.Sum(nil))
   fmt.Printf("FNV1a-128 :: %x\n", xFnv128a.Sum(nil))
-  fmt.Print("-----------------------\n")
+  fmt.Println("-----------------------")
   fmt.Println("OK")
+  return foundFile
 }

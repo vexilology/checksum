@@ -16,3 +16,6 @@ install:
 
 fix:
 	go get -u golang.org/x/sys/cpu
+
+test:
+	go test -v

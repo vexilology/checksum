@@ -15,12 +15,12 @@ make help
 make build
 make fix
 
-hashgosum -m
+hashgosum -m="hello world"
 hashgosum -f=FILENAME
 
 or
 
-go run main.go -m
+go run main.go -m="Hello World"
 go run main.go -f=FILENAME
 ```
 
@@ -73,3 +73,7 @@ go run main.go -f=FILENAME
 | fnv1a-64        |  64  - bit    |
 | fnv1a-128       |  128 - bit    |
 
+
+# TODO:
+- create tests
+- fix input string
