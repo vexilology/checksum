@@ -15,13 +15,13 @@ make help
 make build
 make fix
 
-hashgosum -m="hello world"
-hashgosum -f=FILENAME
+hashgosum -m="Hello World"
+hashgosum -f=Filename
 
 or
 
 go run hashgosum.go -m="Hello World"
-go run hashgosum.go -f=FILENAME
+go run hashgosum.go -f=Filename
 ```
 
 ## Binary
@@ -75,4 +75,5 @@ go run hashgosum.go -f=FILENAME
 
 
 # TODO:
-- create tests
+- create tests.
+- a string can only contain 20 letters and symbols.
