@@ -5,14 +5,15 @@
 ## Start
 
 ```
-# need golang library crypto and other packages
-make install
+# installing golang library crypto and other packages
+make
 ```
 
 ```
-# now you can use it
-make help
+# available commands
 make build
+make isntall
+make test
 make fix
 
 hashgosum -m="Hello World"

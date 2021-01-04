@@ -1,14 +1,9 @@
-help:
-	@echo "make install (install all packages)"
-	@echo "make build (build project)"
-	@echo "make fix (if there is an error related to the 'sys/cpu' library)"
+all: install build test
 
 build:
-	@echo "Building..."
 	go build -o hashgosum hashgosum.go
 
 install:
-	@echo "Installing packages..."
 	go get github.com/cxmcc/tiger
 	go get github.com/htruong/go-md2
 	go get github.com/ebfe/keccak
