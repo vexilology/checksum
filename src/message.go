@@ -87,7 +87,7 @@ func CheckMessage(foundString string) string {
   SHA512_224 := fmt.Sprintf("%x", sha512.Sum512_224([]byte(msg)))
   SHA512_256 := fmt.Sprintf("%x", sha512.Sum512_256([]byte(msg)))
 
-  ASCII85_first := make([]byte, 25, 25)
+  ASCII85_first := make([]byte, 10000, 10000)
   ascii85.Encode(ASCII85_first, []byte(msg))
   ASCII85 := string(ASCII85_first)
 

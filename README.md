@@ -5,12 +5,18 @@
 ## Start
 
 ```
-# installing golang library crypto and other packages
+# first start
+
 make
+
+# have errors?
+
+make fix
 ```
 
 ```
 # available commands
+
 make build
 make isntall
 make test
@@ -77,4 +83,3 @@ go run hashgosum.go -f=Filename
 
 # TODO:
 - create tests.
-- a string can only contain 20 letters and symbols.
