@@ -5,8 +5,10 @@ import (
   "testing"
 )
 
-var checkMessage = flag.Bool("message", false, "testing src/message.go")
-var checkFile = flag.Bool("file", false, "testing src/file.go")
+var (
+  checkMessage = flag.Bool("message", false, "testing src/message.go")
+  checkFile = flag.Bool("file", false, "testing src/file.go")
+)
 
 func TestFlagMessage(t *testing.T) {
   if *checkMessage {

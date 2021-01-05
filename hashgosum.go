@@ -6,10 +6,13 @@ import (
   "./src"
 )
 
-func main() {
-  stringFound := flag.String("m", "", "found string")
-  fileFound := flag.String("f", "", "found file")
-  isHelp := flag.Bool("h", false, "help")
+var (
+  stringFound = flag.String("m", "", "found string")
+  fileFound = flag.String("f", "", "found file")
+  isHelp = flag.Bool("h", false, "help")
+)
+
+func parseFlags() {
   flag.Parse()
 
   if *isHelp {
@@ -22,6 +25,7 @@ func main() {
     src.CheckMessage(*stringFound)
     return
   }
+
   if *fileFound != "" {
     src.CheckFile(*fileFound)
     return
@@ -29,4 +33,8 @@ func main() {
     fmt.Println("Empty message, try again.")
     return
   }
+}
+
+func main() {
+  parseFlags()
 }
