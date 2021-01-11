@@ -22,13 +22,10 @@ make isntall
 make test
 make fix
 
+# Examples
+
 hashgosum -m="Hello World"
 hashgosum -f=Filename
-
-or
-
-go run hashgosum.go -m="Hello World"
-go run hashgosum.go -f=Filename
 ```
 
 ## Binary
@@ -83,3 +80,4 @@ go run hashgosum.go -f=Filename
 
 # TODO:
 - create tests.
+- if a word or sentence starts with '$' - incorrect hash sum.
