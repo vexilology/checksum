@@ -17,22 +17,24 @@ make fix
 ```
 # available commands
 
-make build
+make build or make linux32, make linux64, make win32, make win64, make macos32, make macos64
 make isntall
 make test
 make fix
 
 # Examples
 
-hashgosum -m="Hello World"
-hashgosum -f=Filename
+./hashgosum -h (to view all flag options)
+./hashgosum -m="Hello World"
+./hashgosum -f=Filename
+./hashgosum -m="Hello World" -a=sha256
+./hashgosum -f=Filename -a=sha256
 ```
 
 ## Binary
 
 | Algorithm |
 | --------- |
-| ascii85	  |
 | base32    |
 | base64    |
 
@@ -41,7 +43,13 @@ hashgosum -f=Filename
 | Algorithm       | Digest sizes  |
 | --------------- | ------------- |
 | tiger192,3      |  192 - bit    |
+| shake128-224    |  224 - bit    |
 | shake128-256    |  256 - bit    |
+| shake128-384    |  384 - bit    |
+| shake128-512    |  512 - bit    |
+| shake256-224    |  224 - bit    |
+| shake256-256    |  256 - bit    |
+| shake256-384    |  384 - bit    |
 | shake256-512    |  512 - bit    |
 | keccak224       |  224 - bit    |
 | keccak256       |  256 - bit    |
@@ -79,5 +87,6 @@ hashgosum -f=Filename
 
 
 # TODO:
+- create new flag. Save result in .txt file.
 - create tests.
 - if a word or sentence starts with '$' - incorrect hash sum.

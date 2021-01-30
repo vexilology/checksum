@@ -1,0 +1,252 @@
+package algorithm
+
+import (
+  "fmt"
+  "strconv"
+  "hash/fnv"
+  "hash/crc32"
+  "hash/crc64"
+  "hash/adler32"
+  "crypto/md5"
+  "crypto/sha1"
+  "crypto/sha256"
+  "crypto/sha512"
+  "encoding/base32"
+  "encoding/base64"
+
+  "golang.org/x/crypto/md4"
+  "golang.org/x/crypto/blake2s"
+  "golang.org/x/crypto/blake2b"
+  "golang.org/x/crypto/ripemd160"
+  "golang.org/x/crypto/sha3"
+
+  "github.com/cxmcc/tiger"
+  "github.com/ebfe/keccak"
+  "github.com/htruong/go-md2"
+)
+
+func FoundSHA3_224(input_string string) (int, error) {
+  return fmt.Printf("SHA3_224 :: %x\n", sha3.Sum224([]byte(input_string)))
+}
+
+func FoundSHA3_256(input_string string) (int, error) {
+  return fmt.Printf("SHA3_256 :: %x\n", sha3.Sum256([]byte(input_string)))
+}
+
+func FoundSHA3_384(input_string string) (int, error) {
+  return fmt.Printf("SHA3_384 :: %x\n", sha3.Sum384([]byte(input_string)))
+}
+
+func FoundSHA3_512(input_string string) (int, error) {
+  return fmt.Printf("SHA3_512 :: %x\n", sha3.Sum512([]byte(input_string)))
+}
+
+func FoundTIGER192(input_string string) (int, error) {
+  f_tiger192 := tiger.New()
+  f_tiger192.Write([]byte(input_string))
+  return fmt.Printf("TIGER192,3 :: %x\n", f_tiger192.Sum(nil))
+}
+
+func FoundRIPEMD160(input_string string) (int, error) {
+  f_ripemd := ripemd160.New()
+  f_ripemd.Write([]byte(input_string))
+  return fmt.Printf("RIPEMD160 :: %x\n", f_ripemd.Sum(nil))
+}
+
+func FoundBLAKE2s256(input_string string) (int, error) {
+  return fmt.Printf("BLAKE2s256 :: %x\n", blake2s.Sum256([]byte(input_string)))
+}
+
+func FoundBLAKE2b256(input_string string) (int, error) {
+  return fmt.Printf("BLAKE2b256 :: %x\n", blake2b.Sum256([]byte(input_string)))
+}
+
+func FoundBLAKE2b384(input_string string) (int, error) {
+  return fmt.Printf("BLAKE2b384 :: %x\n", blake2b.Sum384([]byte(input_string)))
+}
+
+func FoundBLAKE2b512(input_string string) (int, error) {
+  return fmt.Printf("BLAKE2b512 :: %x\n", blake2b.Sum512([]byte(input_string)))
+}
+
+func FoundKECCAK224(input_string string) (int, error) {
+  newkeccak224 := keccak.New224()
+  newkeccak224.Write([]byte(input_string))
+  return fmt.Printf("KECCAK224 :: %x\n", newkeccak224.Sum(nil))
+}
+
+func FoundKECCAK256(input_string string) (int, error) {
+  newkeccak256 := sha3.NewLegacyKeccak256()
+  newkeccak256.Write([]byte(input_string))
+  return fmt.Printf("KECCAK256 :: %x\n", newkeccak256.Sum(nil))
+}
+
+func FoundKECCAK384(input_string string) (int, error) {
+  newkeccak384 := keccak.New384()
+  newkeccak384.Write([]byte(input_string))
+  return fmt.Printf("KECCAK384 :: %x\n", newkeccak384.Sum(nil))
+}
+
+func FoundKECCAK512(input_string string) (int, error) {
+  newkeccak512 := sha3.NewLegacyKeccak512()
+  newkeccak512.Write([]byte(input_string))
+  return fmt.Printf("KECCAK512 :: %x\n", newkeccak512.Sum(nil))
+}
+
+func FoundADLER32(input_string string) (int, error) {
+  f_adler32 := adler32.Checksum([]byte(input_string))
+  return fmt.Printf("ADLER32 :: %s\n", strconv.FormatUint(uint64(f_adler32), 16))
+}
+
+func FoundCRC32ieee(input_string string) (int, error) {
+  f_crc32ieee := crc32.ChecksumIEEE([]byte(input_string))
+  return fmt.Printf("CRC32-ieee :: %s\n", strconv.FormatUint(uint64(f_crc32ieee), 16))
+}
+
+func FoundCRC64ecma(input_string string) (int, error) {
+  f_crc64ecma := crc64.New(crc64.MakeTable(crc64.ECMA))
+  f_crc64ecma.Write([]byte(input_string))
+  return fmt.Printf("CRC64-ecma :: %x\n", f_crc64ecma.Sum(nil))
+}
+
+func FoundCRC64iso(input_string string) (int, error) {
+  f_crc64iso := crc64.New(crc64.MakeTable(crc64.ISO))
+  f_crc64iso.Write([]byte(input_string))
+  return fmt.Printf("CRC64-iso :: %x\n", f_crc64iso.Sum(nil))
+}
+
+func FoundSHAKE128_224(input_string string) (int, error) {
+  f_Shake128_224 := keccak.NewSHAKE128(28)
+  f_Shake128_224.Write([]byte(input_string))
+  return fmt.Printf("SHAKE128_224 :: %x\n", f_Shake128_224.Sum(nil))
+}
+
+func FoundSHAKE128_256(input_string string) (int, error) {
+  f_Shake128_256 := keccak.NewSHAKE128(32)
+  f_Shake128_256.Write([]byte(input_string))
+  return fmt.Printf("SHAKE128_256 :: %x\n", f_Shake128_256.Sum(nil))
+}
+
+func FoundSHAKE128_384(input_string string) (int, error) {
+  f_Shake128_384 := keccak.NewSHAKE128(48)
+  f_Shake128_384.Write([]byte(input_string))
+  return fmt.Printf("SHAKE128_384 :: %x\n", f_Shake128_384.Sum(nil))
+}
+
+func FoundSHAKE128_512(input_string string) (int, error) {
+  f_Shake128_512 := keccak.NewSHAKE128(64)
+  f_Shake128_512.Write([]byte(input_string))
+  return fmt.Printf("SHAKE128_512 :: %x\n", f_Shake128_512.Sum(nil))
+}
+
+func FoundSHAKE256_224(input_string string) (int, error) {
+  f_SHAKE256_224 := keccak.NewSHAKE256(28)
+  f_SHAKE256_224.Write([]byte(input_string))
+  return fmt.Printf("SHAKE256_224 :: %x\n", f_SHAKE256_224.Sum(nil))
+}
+
+func FoundSHAKE256_256(input_string string) (int, error) {
+  f_SHAKE256_256 := keccak.NewSHAKE256(32)
+  f_SHAKE256_256.Write([]byte(input_string))
+  return fmt.Printf("SHAKE256_256 :: %x\n", f_SHAKE256_256.Sum(nil))
+}
+
+func FoundSHAKE256_384(input_string string) (int, error) {
+  f_SHAKE256_384 := keccak.NewSHAKE256(48)
+  f_SHAKE256_384.Write([]byte(input_string))
+  return fmt.Printf("SHAKE256_384 :: %x\n", f_SHAKE256_384.Sum(nil))
+}
+
+func FoundSHAKE256_512(input_string string) (int, error) {
+  f_SHAKE256_512 := keccak.NewSHAKE256(64)
+  f_SHAKE256_512.Write([]byte(input_string))
+  return fmt.Printf("SHAKE256_512 :: %x\n", f_SHAKE256_512.Sum(nil))
+}
+
+func FoundMD2(input_string string) (int, error) {
+  f_MD2 := md2.New()
+  f_MD2.Write([]byte(input_string))
+  return fmt.Printf("MD2 :: %x\n", f_MD2.Sum([]byte(nil)))
+}
+
+func FoundMD4(input_string string) (int, error) {
+  f_MD4 := md4.New()
+  f_MD4.Write([]byte(input_string))
+  return fmt.Printf("MD4 :: %x\n", f_MD4.Sum([]byte(nil)))
+}
+
+func FoundMD5(input_string string) (int, error) {
+  return fmt.Printf("MD5 :: %x\n", md5.Sum([]byte(input_string)))
+}
+
+func FoundFNV32(input_string string) (int, error) {
+  f_fnv32 := fnv.New32()
+  f_fnv32.Write([]byte(input_string))
+  return fmt.Printf("FNV32 :: %x\n", f_fnv32.Sum(nil))
+}
+
+func FoundFNV32a(input_string string) (int, error) {
+  f_fnv32a := fnv.New32a()
+  f_fnv32a.Write([]byte(input_string))
+  return fmt.Printf("FNV32a :: %x\n", f_fnv32a.Sum(nil))
+}
+
+func FoundFNV64(input_string string) (int, error) {
+  f_fnv64 := fnv.New64()
+  f_fnv64.Write([]byte(input_string))
+  return fmt.Printf("FNV64 :: %x\n", f_fnv64.Sum(nil))
+}
+
+func FoundFNV64a(input_string string) (int, error) {
+  f_fnv64a := fnv.New64a()
+  f_fnv64a.Write([]byte(input_string))
+  return fmt.Printf("FNV64a :: %x\n", f_fnv64a.Sum(nil))
+}
+
+func FoundFNV128(input_string string) (int, error) {
+  f_fnv128 := fnv.New128()
+  f_fnv128.Write([]byte(input_string))
+  return fmt.Printf("FNV128 :: %x\n", f_fnv128.Sum(nil))
+}
+
+func FoundFNV128a(input_string string) (int, error) {
+  f_fnv128a := fnv.New128a()
+  f_fnv128a.Write([]byte(input_string))
+  return fmt.Printf("FNV128a :: %x\n", f_fnv128a.Sum(nil))
+}
+
+func FoundSHA1(input_string string) (int, error) {
+  return fmt.Printf("SHA1 :: %x\n", sha1.Sum([]byte(input_string)))
+}
+
+func FoundSHA224(input_string string) (int, error) {
+  return fmt.Printf("SHA224 :: %x\n", sha256.Sum224([]byte(input_string)))
+}
+
+func FoundSHA256(input_string string) (int, error) {
+  return fmt.Printf("SHA256 :: %x\n", sha256.Sum256([]byte(input_string)))
+}
+
+func FoundSHA384(input_string string) (int, error) {
+  return fmt.Printf("SHA384 :: %x\n", sha512.Sum384([]byte(input_string)))
+}
+
+func FoundSHA512(input_string string) (int, error) {
+  return fmt.Printf("SHA512 :: %x\n", sha512.Sum512([]byte(input_string)))
+}
+
+func FoundSHA512_224(input_string string) (int, error) {
+  return fmt.Printf("SHA512_224 :: %x\n", sha512.Sum512_224([]byte(input_string)))
+}
+
+func FoundSHA512_256(input_string string) (int, error) {
+  return fmt.Printf("SHA512_256 :: %x\n", sha512.Sum512_256([]byte(input_string)))
+}
+
+func FoundBASE32(input_string string) (int, error) {
+  return fmt.Printf("BASE32 :: %s\n", base32.StdEncoding.EncodeToString([]byte(input_string)))
+}
+
+func FoundBASE64(input_string string) (int, error) {
+  return fmt.Printf("BASE64 :: %s\n", base64.StdEncoding.EncodeToString([]byte(input_string)))
+}

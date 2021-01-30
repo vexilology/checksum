@@ -6,8 +6,8 @@ import (
 )
 
 var (
-  checkMessage = flag.Bool("message", false, "testing src/message.go")
-  checkFile = flag.Bool("file", false, "testing src/file.go")
+  checkMessage = flag.Bool("message", false, "testing message.go")
+  checkFile = flag.Bool("file", false, "testing file.go")
 )
 
 func TestFlagMessage(t *testing.T) {
