@@ -17,7 +17,7 @@ make fix
 ```
 # available commands
 
-make build or make make linux64, make win64, make macos64
+make build or make linux64, make win64, make macos64
 make isntall
 make test
 make fix
