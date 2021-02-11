@@ -10,6 +10,8 @@ var (
   stringFound = flag.String("m", "", "found string")
   fileFound = flag.String("f", "", "found file")
   algorithmName = flag.String("a", "", "algorithm name")
+  saveR = flag.Bool("s", false, "save result in file")
+  deleteF = flag.Bool("d", false, "delete created file")
   isHelp = flag.Bool("h", false, "help")
 )
 
@@ -38,6 +40,10 @@ func parseFlags() {
                  "base32, base64.",
                )
     flag.PrintDefaults()
+  } else if *deleteF {
+    DeleteFile()
+  } else if *saveR {
+    SaveOutput()
   } else if *fileFound != "" {
     switch *algorithmName {
     case "sha3_224":

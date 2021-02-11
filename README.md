@@ -17,7 +17,7 @@ make fix
 ```
 # available commands
 
-make build or make linux32, make linux64, make win32, make win64, make macos32, make macos64
+make build or make make linux64, make win64, make macos64
 make isntall
 make test
 make fix
@@ -32,13 +32,19 @@ make fix
 ```
 
 ## Binary
+<details>
+  <summary>Expand to view</summary>
 
 | Algorithm |
 | --------- |
 | base32    |
 | base64    |
 
+</details>
+
 ## Hash algorithms
+<details>
+  <summary>Expand to view</summary>
 
 | Algorithm       | Digest sizes  |
 | --------------- | ------------- |
@@ -85,6 +91,7 @@ make fix
 | fnv1a-64        |  64  - bit    |
 | fnv1a-128       |  128 - bit    |
 
+</details>
 
 # TODO:
 - create new flag. Save result in .txt file.
