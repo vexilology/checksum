@@ -8,7 +8,6 @@ import (
   "github.com/vexilology/hashgosum/algorithm"
 )
 
-
 var (
   isHelp        = flag.Bool("h", false, "help")
   stringFound   = flag.String("s", "", "found string")

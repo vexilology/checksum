@@ -7,6 +7,8 @@
 ```
 # first start
 
+git clone git@github.com:vexilology/hashgosum.git
+cd hashgosum/
 make
 
 # have errors?
