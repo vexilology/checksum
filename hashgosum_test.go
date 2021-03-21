@@ -3,7 +3,7 @@ package main
 import (
   "testing"
 
-  "./test"
+  "github.com/vexilology/hashgosum/test"
 )
 
 var (
