@@ -10,10 +10,10 @@ import (
 
 
 var (
-  stringFound = flag.String("s", "", "found string")
-  fileFound = flag.String("f", "", "found file")
+  isHelp        = flag.Bool("h", false, "help")
+  stringFound   = flag.String("s", "", "found string")
+  fileFound     = flag.String("f", "", "found file")
   algorithmName = flag.String("a", "", "algorithm name")
-  isHelp = flag.Bool("h", false, "help")
 )
 
 func FiletoString(foundFile string) string {
