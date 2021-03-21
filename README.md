@@ -19,15 +19,13 @@ make fix
 
 make build or make linux64, make win64, make macos64
 make isntall
-make test
+make tests
 make fix
 
 # Examples
 
 ./hashgosum -h (to view all flag options)
-./hashgosum -m="Hello World"
-./hashgosum -f=Filename
-./hashgosum -m="Hello World" -a=sha256
+./hashgosum -s="Hello World" -a=sha256
 ./hashgosum -f=Filename -a=sha256
 ```
 
@@ -94,6 +92,4 @@ make fix
 </details>
 
 # TODO:
-- create new flag. Save result in .txt file.
-- create tests.
 - if a word or sentence starts with '$' - incorrect hash sum.
