@@ -99,7 +99,3 @@ func TestSHA256Message(t *testing.T) {
     t.Errorf("%v :: not found.", sha256sum)
   }
 }
-
-func TestFlagFile(t *testing.T) {
-  t.Skip()
-}

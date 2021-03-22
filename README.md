@@ -92,6 +92,3 @@ make fix
 | fnv1a-128       |  128 - bit    |
 
 </details>
-
-# TODO:
-- if a word or sentence starts with '$' - incorrect hash sum.
