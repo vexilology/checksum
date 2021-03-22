@@ -26,9 +26,9 @@ make fix
 
 # Examples
 
-./hashgosum -h (to view all flag options)
-./hashgosum -s="Hello World" -a=sha256
-./hashgosum -f=Filename -a=sha256
+./hashgosum -h
+./hashgosum -s="hello World" -a=sha256
+./hashgosum -f=filename -a=sha256
 ```
 
 ## Binary
