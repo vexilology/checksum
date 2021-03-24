@@ -13,6 +13,21 @@ var (
   algorithmName = flag.String("a", "", "algorithm name")
 )
 
+var algorithm_list = []string{
+  "sha3_224", "sha3_256", "sha3_384", "sha3_512",
+  "tiger192", "ripemd160", "adler32",
+  "blake2s256", "blake2b256", "blake2b384", "blake2b512",
+  "keccak224", "keccak256", "keccak384", "keccak512",
+  "crc32ieee", "crc64ecma", "crc64iso",
+  "shake128_224", "shake128_256", "shake128_384", "shake128_512",
+  "shake256_224", "shake256_256", "shake256_384", "shake256_512",
+  "md2", "md4", "md5",
+  "fnv32", "fnv32a", "fnv64", "fnv64a", "fnv128", "fnv128a",
+  "sha1", "sha224", "sha256", "sha384", "sha512",
+  "sha512_224", "sha512_256",
+  "base32", "base64",
+}
+
 func FiletoString(foundFile string) string {
   f_file, err := ioutil.ReadFile(foundFile)
   if err != nil {
@@ -32,26 +47,7 @@ func parseFlags() {
   flag.Parse()
 
   if *isHelp {
-    fmt.Println("Available:",
-                 "sha3_224, sha3_256, sha3_384, sha3_512,",
-                 "tiger192,",
-                 "ripemd160,",
-                 "blake2s256,",
-                 "blake2b256, blake2b384, blake2b512,",
-                 "keccak224, keccak256, keccak384, keccak512,",
-                 "adler32,",
-                 "crc32ieee,",
-                 "crc64ecma, crc64iso,",
-                 "shake128_224, shake128_256, shake128_384, shake128_512,",
-                 "shake256_224, shake256_256, shake256_384, shake256_512,",
-                 "md2, md4, md5,",
-                 "fnv32, fnv32a,",
-                 "fnv64, fnv64a,",
-                 "fnv128, fnv128a,",
-                 "sha1, sha224, sha256, sha384, sha512,",
-                 "sha512_224, sha512_256,",
-                 "base32, base64.",
-               )
+    fmt.Println("Available:", []string(algorithm_list))
     flag.PrintDefaults()
   } else if *fileFound != "" {
     CasefullFile()
