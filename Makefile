@@ -1,5 +1,8 @@
 all: install build tests
 
+list:
+	@grep '^[^#[:space:]].*:' Makefile
+
 build:
 	go build hashgosum.go casefull.go
 

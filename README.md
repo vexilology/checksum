@@ -1,3 +1,5 @@
+# hashgosum
+
 > Testing on Ubuntu 16.04 && go1.13.4 linux/amd64.
 
 > Testing on Ubuntu 20.04.1 LTS on Windows 10 x86_64 && go version go1.15.2 linux/amd64.
@@ -19,10 +21,7 @@ make fix
 ```
 # available commands
 
-make build or make linux64, make win64, make macos64
-make isntall
-make tests
-make fix
+make list
 
 # Examples
 
