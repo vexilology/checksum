@@ -1,7 +1,18 @@
 package main
 
 import (
+  "hash"
+  "math/rand"
+  "crypto/sha1"
+  "crypto/md5"
+  "crypto/sha256"
+  "encoding/base64"
   "testing"
+
+  "golang.org/x/crypto/blake2b"
+  "golang.org/x/crypto/blake2s"
+  "golang.org/x/crypto/ripemd160"
+  "golang.org/x/crypto/sha3"
 
   "github.com/vexilology/hashgosum/test"
 )
@@ -123,26 +134,73 @@ var keccak256_tests = []keccak256sum{
   {"25777fb75e8113f500c747c5a6f29203427293813d12963df6400897ce5fca3f", "hell@ #r1d"},
 }
 
-func benchmarkOriginal(num uint, b *testing.B) {
+func benchmarkPrime(num uint, b *testing.B) {
   for i := 0; i < b.N; i++ {
     test.Prime(num)
   }
 }
 
-func BenchmarkPrime1(b *testing.B) {
-  benchmarkOriginal(1, b)
+func benchmarkHash(h hash.Hash, b *testing.B) {
+  data := make([]byte, 1024)
+  rand.Read(data)
+
+  b.ResetTimer()
+  for i := 0; i < b.N; i++ {
+    h.Write(data)
+    h.Sum(nil)
+  }
 }
 
-func BenchmarkPrime183(b *testing.B) {
-  benchmarkOriginal(183, b)
+func BenchmarkPrime1(b *testing.B) { benchmarkPrime(1, b) }
+
+func BenchmarkPrime183(b *testing.B) { benchmarkPrime(183, b) }
+
+func BenchmarkPrime923(b *testing.B) { benchmarkPrime(923, b) }
+
+func BenchmarkPrime1039281(b *testing.B) { benchmarkPrime(1039281, b) }
+
+func BenchmarkMD5(b *testing.B) { benchmarkHash(md5.New(), b) }
+
+func BenchmarkSHA1(b *testing.B) { benchmarkHash(sha1.New(), b) }
+
+func BenchmarkSHA256(b *testing.B) { benchmarkHash(sha256.New(), b) }
+
+func BenchmarkSHA3_256(b *testing.B) { benchmarkHash(sha3.New256(), b) }
+
+func BenchmarkRIPEMD160(b *testing.B) { benchmarkHash(ripemd160.New(), b) }
+
+func BenchmarkBLAKE2b(b *testing.B) {
+  h, _ := blake2b.New256(nil)
+  benchmarkHash(h, b)
 }
 
-func BenchmarkPrime923(b *testing.B) {
-  benchmarkOriginal(923, b)
+func BenchmarkBLAKE2s(b *testing.B) {
+  h, _ := blake2s.New256(nil)
+  benchmarkHash(h, b)
 }
 
-func BenchmarkPrime1039281(b *testing.B) {
-  benchmarkOriginal(1039281, b)
+func BenchmarkEncode(b *testing.B) {
+  data := make([]byte, 1024)
+  rand.Read(data)
+
+  b.ResetTimer()
+  for i := 0; i < b.N; i++ {
+    base64.StdEncoding.EncodeToString([]byte(data))
+  }
+}
+
+func BenchmarkDecode(b *testing.B) {
+  data := make([]byte, 1024)
+  rand.Read(data)
+  encoded := base64.StdEncoding.EncodeToString([]byte(data))
+
+  b.ResetTimer()
+  for i := 0; i < b.N; i++ {
+    _, err := base64.StdEncoding.DecodeString(encoded)
+    if err != nil {
+      panic(err)
+    }
+  }
 }
 
 func TestBLAKE2b256(t *testing.T) {
