@@ -123,6 +123,28 @@ var keccak256_tests = []keccak256sum{
   {"25777fb75e8113f500c747c5a6f29203427293813d12963df6400897ce5fca3f", "hell@ #r1d"},
 }
 
+func benchmarkOriginal(num uint, b *testing.B) {
+  for i := 0; i < b.N; i++ {
+    test.Prime(num)
+  }
+}
+
+func BenchmarkPrime1(b *testing.B) {
+  benchmarkOriginal(1, b)
+}
+
+func BenchmarkPrime183(b *testing.B) {
+  benchmarkOriginal(183, b)
+}
+
+func BenchmarkPrime923(b *testing.B) {
+  benchmarkOriginal(923, b)
+}
+
+func BenchmarkPrime1039281(b *testing.B) {
+  benchmarkOriginal(1039281, b)
+}
+
 func TestBLAKE2b256(t *testing.T) {
   for i := 0; i < len(blake2b256_tests); i++ {
     r := blake2b256_tests[i]

@@ -34,4 +34,5 @@ fix:
 	go get -u golang.org/x/sys/cpu
 
 tests:
+	go test -bench=.
 	go test -v
