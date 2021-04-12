@@ -30,17 +30,6 @@ make list
 ./hashgosum -f=filename -a=sha256
 ```
 
-## Binary
-<details>
-  <summary>Expand to view</summary>
-
-| Algorithm |
-| --------- |
-| base32    |
-| base64    |
-
-</details>
-
 ## Hash algorithms
 <details>
   <summary>Expand to view</summary>
