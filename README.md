@@ -4,27 +4,26 @@
 
 > Testing on Ubuntu 20.04.1 LTS on Windows 10 x86_64 && go1.15.2 linux/amd64.
 
-## Start
+## First Start
 
 ```
-# first start
-
 git clone git@github.com:vexilology/hashgosum.git
 cd hashgosum/
 make
 
-# have errors?
+or
 
-make fix
+go get -u github.com/vexilology/hashgosum
+cd ~/go/bin
 ```
 
+## Available command
 ```
-# available commands
-
 make list
+```
 
-# Examples
-
+## Examples
+```
 ./hashgosum -h
 ./hashgosum -s="hello World" -a=sha256
 ./hashgosum -f=filename -a=sha256
