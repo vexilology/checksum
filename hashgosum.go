@@ -43,7 +43,7 @@ func fileToString(foundFile string) string {
 // FIXME defaultError() now not used
 func defaultError() {
   if *algorithmName == "" {
-    fmt.Println("Unknown algorithm, try again.")
+    log.Fatal("Unknown algorithm, try again.")
   }
 }
 
@@ -189,21 +189,17 @@ func parseFlags() {
     fmt.Println("Available:", []string(algorithm_list))
     flag.PrintDefaults()
   } else if *fileFound != "" {
-    // FIXME there are always 2 digits at the end. hash sum is correct
-    resultF, err := (h[*algorithmName](fileToString(*fileFound)))
-    if err != nil {
-      log.Fatal(err)
-    }
-    fmt.Println(resultF)
+    // We return int value. So there were unnecessary characters
+    // at the end of the result.
+    // We converted the int -> string and took away an
+    // unnecessary symbol.
+    resultF, _ := h[*algorithmName](fileToString(*fileFound))
+    fmt.Println(string(resultF)[1:])
   } else if *stringFound != "" {
-    // FIXME there are always 2 digits at the end. hash sum is correct
-    resultS, err := (h[*algorithmName](*stringFound))
-    if err != nil {
-      log.Fatal(err)
-    }
-    fmt.Println(resultS)
+    resultS, _ := h[*algorithmName](*stringFound)
+    fmt.Println(string(resultS)[1:])
   } else {
-    fmt.Println("Empty message, try again.")
+    log.Fatal("Empty message, try again.")
   }
 }
 
