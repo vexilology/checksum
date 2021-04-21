@@ -7,14 +7,16 @@
 ## First Start
 
 ```
-git clone git@github.com:vexilology/hashgosum.git
-cd hashgosum/
-make
+go get -u github.com/vexilology/hashgosum
+cd ~/go/bin
+chmod +x hashgosum
+sudo ln -sf ~/go/bin/hashgosum /usr/bin/hashgosum
 
 or
 
-go get -u github.com/vexilology/hashgosum
-cd ~/go/bin
+git clone git@github.com:vexilology/hashgosum.git
+cd hashgosum/
+make
 ```
 
 ## Available commands

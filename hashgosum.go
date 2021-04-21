@@ -9,6 +9,8 @@ import (
   "github.com/vexilology/hashgosum/algorithm"
 )
 
+type Hmap func(string)(int, error)
+
 var (
   isHelp        = flag.Bool("h", false, "help")
   stringFound   = flag.String("s", "", "found string")
@@ -40,17 +42,10 @@ func fileToString(foundFile string) string {
   return s_file
 }
 
-// FIXME defaultError() now not used
-func defaultError() {
-  if *algorithmName == "" {
-    log.Fatal("Unknown algorithm, try again.")
-  }
-}
-
 func parseFlags() {
   flag.Parse()
 
-  h := map[string]func(string) (int, error) {
+  h := map[string]Hmap{
     "md2": func(s string) (int, error) {
       return algorithm.FoundMD2(s)
     },
@@ -193,11 +188,19 @@ func parseFlags() {
     // at the end of the result.
     // We converted the int -> string and took away an
     // unnecessary symbol.
-    resultF, _ := h[*algorithmName](fileToString(*fileFound))
-    fmt.Println(string(resultF)[1:])
+    if _, ok := h[*algorithmName]; ok {
+      resultF, _ := h[*algorithmName](fileToString(*fileFound))
+      fmt.Println(string(resultF)[1:])
+    } else {
+      log.Fatal("Unknown algorithm, try again.")
+    }
   } else if *stringFound != "" {
-    resultS, _ := h[*algorithmName](*stringFound)
-    fmt.Println(string(resultS)[1:])
+    if _, ok := h[*algorithmName]; ok {
+      resultS, _ := h[*algorithmName](*stringFound)
+      fmt.Println(string(resultS)[1:])
+    } else {
+      log.Fatal("Unknown algorithm, try again.")
+    }
   } else {
     log.Fatal("Empty message, try again.")
   }
