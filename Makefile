@@ -1,6 +1,6 @@
 default_build := go build hashgosum.go
 
-all: install build tests
+all: install tests build
 
 list:
 	@grep '^[^#[:space:]].*:' Makefile
@@ -8,22 +8,13 @@ list:
 build:
 	$(default_build)
 
-linux32:
-	GOOS=linux GOARCH=386 $(default_build)
-
-linux64:
+linux:
 	GOOS=linux GOARCH=amd64 $(default_build)
 
-win32:
-	GOOS=windows GOARCH=386 $(default_build)
-
-win64:
+win:
 	GOOS=windows GOARCH=amd64 $(default_build)
 
-macos32:
-	GOOS=darwin GOARCH=386 $(default_build)
-
-macos64:
+macos:
 	GOOS=darwin GOARCH=amd64 $(default_build)
 
 install:

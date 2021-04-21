@@ -17,7 +17,7 @@ go get -u github.com/vexilology/hashgosum
 cd ~/go/bin
 ```
 
-## Available command
+## Available commands
 ```
 make list
 ```
