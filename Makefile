@@ -1,4 +1,4 @@
-default_build := go build hashgosum.go
+default_build := go build .
 
 all: install tests build
 

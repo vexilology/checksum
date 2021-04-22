@@ -26,9 +26,9 @@ make list
 
 ## Examples
 ```
-./hashgosum -h
-./hashgosum -s="hello World" -a=sha256
-./hashgosum -f=filename -a=sha256
+hashgosum -h
+hashgosum -s="hello World" -a=sha256
+hashgosum -f=filename -a=sha256
 ```
 
 ## Hash algorithms
