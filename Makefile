@@ -10,6 +10,7 @@ build:
 
 linux:
 	GOOS=linux GOARCH=amd64 $(default_build)
+	sudo ln -sf hashgosum /usr/bin/hashgosum
 
 win:
 	GOOS=windows GOARCH=amd64 $(default_build)

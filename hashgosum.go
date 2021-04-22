@@ -9,9 +9,9 @@ import (
 
 var (
   isHelp        = flag.Bool("h", false, "help")
-  stringFound   = flag.String("s", "", "found string")
-  fileFound     = flag.String("f", "", "found file")
-  algorithmName = flag.String("a", "", "algorithm name")
+  stringFound   = flag.String("s", "", "string")
+  fileFound     = flag.String("f", "", "file")
+  algorithmName = flag.String("a", "", "algorithm")
 )
 
 var algorithm_list = []string{

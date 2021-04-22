@@ -81,3 +81,6 @@ hashgosum -f=filename -a=sha256
 | fnv1a-128       |  128 - bit    |
 
 </details>
+
+## TODO list
+- click [`her`](./TODO)
