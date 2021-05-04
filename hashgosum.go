@@ -45,20 +45,20 @@ func parseFlags() {
     fmt.Println("Available:", []string(algorithm_list))
     flag.PrintDefaults()
   } else if *fileFound != "" {
-    // We return int value. So there were unnecessary characters
-    // at the end of the result.
-    // We converted the int -> string and took away an
-    // unnecessary symbol.
     if _, ok := h[*algorithmName]; ok {
       resultF, _ := h[*algorithmName](fileToString(*fileFound))
-      fmt.Println(string(resultF)[1:])
+      fmt.Sprintf("%v", resultF)
+      // empty fmt for new line. '\n' not working
+      fmt.Println()
     } else {
       log.Fatal("Unknown algorithm, try again.")
     }
   } else if *stringFound != "" {
     if _, ok := h[*algorithmName]; ok {
       resultS, _ := h[*algorithmName](*stringFound)
-      fmt.Println(string(resultS)[1:])
+      fmt.Sprintf("%v", resultS)
+      // empty fmt for new line. '\n' not working
+      fmt.Println()
     } else {
       log.Fatal("Unknown algorithm, try again.")
     }

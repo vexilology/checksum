@@ -28,5 +28,6 @@ fix:
 	go get -u golang.org/x/sys/cpu
 
 tests:
+	go test -v
 	cd algorithm && go test -bench=.
 	cd algorithm && go test -v
