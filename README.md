@@ -16,7 +16,7 @@ or
 
 git clone git@github.com:vexilology/hashgosum.git
 cd hashgosum/
-make
+make linux
 ```
 
 ## Available commands
@@ -83,4 +83,4 @@ hashgosum -f=filename -a=sha256
 </details>
 
 ## TODO list
-- click [`her`](./TODO)
+[`her`](./TODO)

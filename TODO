@@ -1,1 +1,2 @@
 * If a word or sentence starts with '$' - incorrect hash sum.
+* Error on main test: Conversion from int to string yields a string of one rune, not a string of digits (did you mean fmt.Sprint(x)?)
