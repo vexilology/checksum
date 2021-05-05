@@ -15,7 +15,7 @@ or
 
 git clone git@github.com:vexilology/hashgosum.git
 cd hashgosum/
-make linux
+make
 ```
 
 ## Available commands

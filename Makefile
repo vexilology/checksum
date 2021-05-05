@@ -1,12 +1,9 @@
 default_build := go build .
 
-all: install tests build
+all: install tests linux
 
 list:
 	@grep '^[^#[:space:]].*:' Makefile
-
-build:
-	$(default_build)
 
 linux:
 	GOOS=linux GOARCH=amd64 $(default_build)
