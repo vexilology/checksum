@@ -9,7 +9,6 @@
 ```
 go get -u github.com/vexilology/hashgosum
 cd ~/go/bin
-chmod +x hashgosum
 sudo ln -sf ~/go/bin/hashgosum /usr/bin/hashgosum
 
 or
@@ -83,4 +82,4 @@ hashgosum -f=filename -a=sha256
 </details>
 
 ## TODO list
-[`her`](./TODO)
+click [`her`](./TODO)
