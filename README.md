@@ -1,8 +1,6 @@
 # hashgosum
 
-> Testing on Ubuntu 16.04 && go1.13.4 linux/amd64.
-
-> Testing on Ubuntu 20.04.1 LTS on Windows 10 x86_64 && go1.15.2 linux/amd64.
+> Testing on Ubuntu 20.04.1 LTS on Windows 10 x86_64 && go1.16.4 linux/amd64.
 
 ## First Start
 
@@ -26,7 +24,7 @@ make list
 ## Examples
 ```
 hashgosum -h
-hashgosum -s="hello World" -a=sha256
+hashgosum -s="hello world" -a=sha256
 hashgosum -f=filename -a=sha256
 ```
 

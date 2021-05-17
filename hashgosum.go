@@ -48,7 +48,6 @@ func parseFlags() {
     if _, ok := h[*algorithmName]; ok {
       resultF, _ := h[*algorithmName](fileToString(*fileFound))
       fmt.Sprintf("%v", resultF)
-      // empty fmt for new line. '\n' not working
       fmt.Println()
     } else {
       log.Fatal("Unknown algorithm, try again.")
@@ -57,7 +56,6 @@ func parseFlags() {
     if _, ok := h[*algorithmName]; ok {
       resultS, _ := h[*algorithmName](*stringFound)
       fmt.Sprintf("%v", resultS)
-      // empty fmt for new line. '\n' not working
       fmt.Println()
     } else {
       log.Fatal("Unknown algorithm, try again.")

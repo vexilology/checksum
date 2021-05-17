@@ -1,8 +1,6 @@
 package main
 
-import (
-  "github.com/vexilology/hashgosum/algorithm"
-)
+import "github.com/vexilology/hashgosum/algorithm"
 
 type Hmap func(string)(int, error)
 
