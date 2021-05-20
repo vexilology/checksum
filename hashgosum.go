@@ -49,20 +49,22 @@ func parseFlags() {
     flag.PrintDefaults()
   } else if *fileFound != "" {
     if _, ok := h[*algorithmName]; ok {
-      resultF := h[*algorithmName](fileToString(*fileFound))
-      fmt.Println(resultF)
       if *saveResult {
-        output.CreateAndSave(resultF)
+        output.CreateAndSave(h[*algorithmName](fileToString(*fileFound)))
+      } else {
+        resultF := h[*algorithmName](fileToString(*fileFound))
+        fmt.Println(resultF)
       }
     } else {
       log.Fatal("Unknown algorithm, try again.")
     }
   } else if *stringFound != "" {
     if _, ok := h[*algorithmName]; ok {
-      resultS := h[*algorithmName](*stringFound)
-      fmt.Println(resultS)
       if *saveResult {
-        output.CreateAndSave(resultS)
+        output.CreateAndSave(h[*algorithmName](*stringFound))
+      } else {
+        resultS := h[*algorithmName](*stringFound)
+        fmt.Println(resultS)
       }
     } else {
       log.Fatal("Unknown algorithm, try again.")
