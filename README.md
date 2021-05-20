@@ -23,7 +23,8 @@ make list
 
 ## Examples
 ```
-hashgosum -h
+hashgosum -help
+hashgosum -s="hello world" -a=sha256 -save
 hashgosum -s="hello world" -a=sha256
 hashgosum -f=filename -a=sha256
 ```

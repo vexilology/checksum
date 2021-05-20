@@ -1,7 +1,6 @@
 package algorithm
 
 import (
-  "fmt"
   "hash"
   "math/rand"
   "crypto/sha1"
@@ -10,14 +9,10 @@ import (
   "encoding/base64"
   "testing"
 
-  "golang.org/x/crypto/md4"
   "golang.org/x/crypto/blake2b"
   "golang.org/x/crypto/blake2s"
   "golang.org/x/crypto/ripemd160"
   "golang.org/x/crypto/sha3"
-
-  "github.com/cxmcc/tiger"
-  "github.com/htruong/go-md2"
 )
 
 type keccak256sum struct {
@@ -225,56 +220,10 @@ func BenchmarkDecode(b *testing.B) {
   }
 }
 
-func NewFoundSHA3_256(input_string string) string {
-  return fmt.Sprintf("%x", sha3.Sum256([]byte(input_string)))
-}
-
-func NewFoundTIGER192(input_string string) string {
-  f_tiger192 := tiger.New()
-  f_tiger192.Write([]byte(input_string))
-  return fmt.Sprintf("%x", f_tiger192.Sum(nil))
-}
-
-func NewFoundRIPEMD160(input_string string) string {
-  f_ripemd := ripemd160.New()
-  f_ripemd.Write([]byte(input_string))
-  return fmt.Sprintf("%x", f_ripemd.Sum(nil))
-}
-
-func NewFoundBLAKE2s256(input_string string) string {
-  return fmt.Sprintf("%x", blake2s.Sum256([]byte(input_string)))
-}
-
-func NewFoundBLAKE2b256(input_string string) string {
-  return fmt.Sprintf("%x", blake2b.Sum256([]byte(input_string)))
-}
-
-func NewFoundKECCAK256(input_string string) string {
-  newkeccak256 := sha3.NewLegacyKeccak256()
-  newkeccak256.Write([]byte(input_string))
-  return fmt.Sprintf("%x", newkeccak256.Sum(nil))
-}
-
-func NewFoundMD2(input_string string) string {
-  f_MD2 := md2.New()
-  f_MD2.Write([]byte(input_string))
-  return fmt.Sprintf("%x", f_MD2.Sum(nil))
-}
-
-func NewFoundMD4(input_string string) string {
-  f_MD4 := md4.New()
-  f_MD4.Write([]byte(input_string))
-  return fmt.Sprintf("%x", f_MD4.Sum([]byte(nil)))
-}
-
-func NewFoundSHA256(input_string string) string {
-  return fmt.Sprintf("%x", sha256.Sum256([]byte(input_string)))
-}
-
 func TestBLAKE2b256(t *testing.T) {
   for i := 0; i < len(blake2b256_tests); i++ {
     r := blake2b256_tests[i]
-    f := NewFoundBLAKE2b256(r.result)
+    f := FoundBLAKE2b256(r.result)[14:]
     if f != r.hash {
       t.Errorf("hash '%v' not found", r.hash)
     } else {
@@ -286,7 +235,7 @@ func TestBLAKE2b256(t *testing.T) {
 func TestBLAKE2s256(t *testing.T) {
   for i := 0; i < len(blake2s256_tests); i++ {
     r := blake2s256_tests[i]
-    f := NewFoundBLAKE2s256(r.result)
+    f := FoundBLAKE2s256(r.result)[14:]
     if f != r.hash {
       t.Errorf("hash '%v' not found", r.hash)
     } else {
@@ -298,7 +247,7 @@ func TestBLAKE2s256(t *testing.T) {
 func TestRIPEMD160(t *testing.T) {
   for i := 0; i < len(ripemd160_tests); i++ {
     r := ripemd160_tests[i]
-    f := NewFoundRIPEMD160(r.result)
+    f := FoundRIPEMD160(r.result)[13:]
     if f != r.hash {
       t.Errorf("hash '%v' not found", r.hash)
     } else {
@@ -310,7 +259,7 @@ func TestRIPEMD160(t *testing.T) {
 func TestSHA3Message(t *testing.T) {
   for i := 0; i < len(sha3_256tests); i++ {
     r := sha3_256tests[i]
-    f := NewFoundSHA3_256(r.result)
+    f := FoundSHA3_256(r.result)[12:]
     if f != r.hash {
       t.Errorf("hash '%v' not found", r.hash)
     } else {
@@ -322,7 +271,7 @@ func TestSHA3Message(t *testing.T) {
 func TestMD4Message(t *testing.T) {
   for i := 0; i < len(md4_tests); i++ {
     r := md4_tests[i]
-    f := NewFoundMD4(r.result)
+    f := FoundMD4(r.result)[7:]
     if f != r.hash {
       t.Errorf("hash '%v' not found", r.hash)
     } else {
@@ -334,9 +283,10 @@ func TestMD4Message(t *testing.T) {
 func TestTIGER192Message(t *testing.T) {
   for i := 0; i < len(tiger192_tests); i++ {
     r := tiger192_tests[i]
-    f := NewFoundTIGER192(r.result)
+    f := FoundTIGER192(r.result)[14:]
     if f != r.hash {
       t.Errorf("hash '%v' not found", r.hash)
+      t.Logf("%v LOH GER", f)
     } else {
       t.Logf("message '%v' tiger192sum '%v' found", r.result, r.hash)
     }
@@ -346,7 +296,7 @@ func TestTIGER192Message(t *testing.T) {
 func TestMD2Message(t *testing.T) {
   for i := 0; i < len(md2_tests); i++ {
     r := md2_tests[i]
-    f := NewFoundMD2(r.result)
+    f := FoundMD2(r.result)[7:]
     if f != r.hash {
       t.Errorf("hash '%v' not found", r.hash)
     } else {
@@ -358,9 +308,10 @@ func TestMD2Message(t *testing.T) {
 func TestKECCAK256Message(t *testing.T) {
   for i := 0; i < len(keccak256_tests); i++ {
     r := keccak256_tests[i]
-    f := NewFoundKECCAK256(r.result)
+    f := FoundKECCAK256(r.result)[13:]
     if f != r.hash {
       t.Errorf("hash '%v' not found", r.hash)
+      t.Logf("%v LOH GER", f)
     } else {
       t.Logf("message '%v' keccak256sum '%v' found", r.result, r.hash)
     }
@@ -370,7 +321,7 @@ func TestKECCAK256Message(t *testing.T) {
 func TestSHA256Message(t *testing.T) {
   for i := 0; i < len(sha256_tests); i++ {
     r := sha256_tests[i]
-    f := NewFoundSHA256(r.result)
+    f := FoundSHA256(r.result)[10:]
     if f != r.hash {
       t.Errorf("hash '%v' not found", r.hash)
     } else {

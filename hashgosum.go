@@ -5,10 +5,13 @@ import (
   "fmt"
   "flag"
   "io/ioutil"
+
+  "github.com/vexilology/hashgosum/output"
 )
 
 var (
-  isHelp        = flag.Bool("h", false, "help")
+  isHelp        = flag.Bool("help", false, "help")
+  saveResult    = flag.Bool("save", false, "save output")
   stringFound   = flag.String("s", "", "string")
   fileFound     = flag.String("f", "", "file")
   algorithmName = flag.String("a", "", "algorithm")
@@ -46,17 +49,21 @@ func parseFlags() {
     flag.PrintDefaults()
   } else if *fileFound != "" {
     if _, ok := h[*algorithmName]; ok {
-      resultF, _ := h[*algorithmName](fileToString(*fileFound))
-      fmt.Sprintf("%v", resultF)
-      fmt.Println()
+      resultF := h[*algorithmName](fileToString(*fileFound))
+      fmt.Println(resultF)
+      if *saveResult {
+        output.CreateAndSave(resultF)
+      }
     } else {
       log.Fatal("Unknown algorithm, try again.")
     }
   } else if *stringFound != "" {
     if _, ok := h[*algorithmName]; ok {
-      resultS, _ := h[*algorithmName](*stringFound)
-      fmt.Sprintf("%v", resultS)
-      fmt.Println()
+      resultS := h[*algorithmName](*stringFound)
+      fmt.Println(resultS)
+      if *saveResult {
+        output.CreateAndSave(resultS)
+      }
     } else {
       log.Fatal("Unknown algorithm, try again.")
     }
