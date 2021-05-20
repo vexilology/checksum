@@ -5,8 +5,9 @@
 ## First Start
 
 ```
+[!] Check your golang folder.
+
 go get -u github.com/vexilology/hashgosum
-cd ~/go/bin
 sudo ln -sf ~/go/bin/hashgosum /usr/bin/hashgosum
 
 or
