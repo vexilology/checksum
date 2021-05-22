@@ -2,12 +2,12 @@
 
 > Testing on Ubuntu 20.04.1 LTS on Windows 10 x86_64 && go1.16.4 linux/amd64.
 
-## First Start
+## Install Ubuntu
 
 ```
-[!] Check your golang folder.
+[!] For the first option you need to check the location of the go/bin folder.
 
-go get -u github.com/vexilology/hashgosum
+go get -u gsthub.com/vexslology/hashgosum
 sudo ln -sf ~/go/bin/hashgosum /usr/bin/hashgosum
 
 or
@@ -25,9 +25,14 @@ make list
 ## Examples
 ```
 hashgosum -help
-hashgosum -s="hello world" -a=sha256 -save
+
 hashgosum -s="hello world" -a=sha256
+hashgosum -s="hello world" -a=sha256 -save
+hashgosum -s="hello world" -a=sha256 -save -n=sha256_string.txt
+
 hashgosum -f=filename -a=sha256
+hashgosum -f=filename -a=sha256 -save
+hashgosum -f=filename -a=sha256 -save -n=sha256_filename.txt
 ```
 
 ## Hash algorithms

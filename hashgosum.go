@@ -12,6 +12,7 @@ import (
 var (
   isHelp        = flag.Bool("help", false, "help")
   saveResult    = flag.Bool("save", false, "save output")
+  fileName      = flag.String("n", "", "create file")
   stringFound   = flag.String("s", "", "string")
   fileFound     = flag.String("f", "", "file")
   algorithmName = flag.String("a", "", "algorithm")
@@ -50,7 +51,7 @@ func parseFlags() {
   } else if *fileFound != "" {
     if _, ok := h[*algorithmName]; ok {
       if *saveResult {
-        output.CreateAndSave(h[*algorithmName](fileToString(*fileFound)))
+        output.CreateAndSave(h[*algorithmName](fileToString(*fileFound)), *fileName)
       } else {
         resultF := h[*algorithmName](fileToString(*fileFound))
         fmt.Println(resultF)
@@ -61,7 +62,7 @@ func parseFlags() {
   } else if *stringFound != "" {
     if _, ok := h[*algorithmName]; ok {
       if *saveResult {
-        output.CreateAndSave(h[*algorithmName](*stringFound))
+        output.CreateAndSave(h[*algorithmName](*stringFound), *fileName)
       } else {
         resultS := h[*algorithmName](*stringFound)
         fmt.Println(resultS)
