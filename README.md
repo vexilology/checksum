@@ -28,11 +28,11 @@ hashgosum -help
 
 hashgosum -s="hello world" -a=sha256
 hashgosum -s="hello world" -a=sha256 -save
-hashgosum -s="hello world" -a=sha256 -save -n=sha256_string.txt
+hashgosum -s="hello world" -a=sha256 -save -c=sha256_string.txt
 
 hashgosum -f=filename -a=sha256
 hashgosum -f=filename -a=sha256 -save
-hashgosum -f=filename -a=sha256 -save -n=sha256_filename.txt
+hashgosum -f=filename -a=sha256 -save -c=sha256_filename.txt
 ```
 
 ## Hash algorithms
