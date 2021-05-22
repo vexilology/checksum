@@ -7,7 +7,7 @@
 ```
 [!] For the first option you need to check the location of the go/bin folder.
 
-go get -u gsthub.com/vexslology/hashgosum
+go get -u github.com/vexilology/hashgosum
 sudo ln -sf ~/go/bin/hashgosum /usr/bin/hashgosum
 
 or
