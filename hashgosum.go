@@ -5,6 +5,7 @@ import (
   "fmt"
   "flag"
   "io/ioutil"
+  "strings"
 
   "github.com/vexilology/hashgosum/output"
 )
@@ -33,6 +34,8 @@ var algorithm_list = []string{
   "base32", "base64",
 }
 
+const q_alert = "[!] Only use single quotes. Other quotes can cause errors. [!]"
+
 func fileToString(foundFile string) string {
   f_file, err := ioutil.ReadFile(foundFile)
   if err != nil {
@@ -46,8 +49,9 @@ func parseFlags() {
   flag.Parse()
 
   if *isHelp {
-    fmt.Println("[!] Only use single quotes. Other quotes can cause errors. [!]\n")
-    fmt.Println("Available:", []string(algorithm_list))
+    convert := strings.Join(algorithm_list, ", ")
+    fmt.Printf("%s\n\n", q_alert)
+    fmt.Println("Available:", convert)
     flag.PrintDefaults()
   } else if *fileFound != "" {
     if _, ok := h[*algorithmName]; ok {
