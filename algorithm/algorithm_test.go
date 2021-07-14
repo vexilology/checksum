@@ -15,6 +15,11 @@ import (
   "golang.org/x/crypto/sha3"
 )
 
+type Symbols struct {
+  symbols_pack string
+  result       string
+}
+
 type keccak256sum struct {
   hash   string
   result string
@@ -58,6 +63,29 @@ type blake2s256sum struct {
 type blake2b256sum struct {
   hash   string
   result string
+}
+
+var sha256_symbols = []Symbols{
+  {"bb7208bc9b5d7c04f1236a82a0093a5e33f40423d5ba8d4266f7092c3ba43b62", "!"},
+  {"8a8de823d5ed3e12746a62ef169bcf372be0ca44f0a1236abc35df05d96928e1", "?"},
+  {"7ace431cb61584cb9b8dc7ec08cf38ac0a2d649660be86d349fb43108b542fa4", "~"},
+  {"334359b90efed75da5f0ada1d5e6b256f4a6bd0aee7eb39c0f90182a021ffc8b", "#"},
+  {"09fc96082d34c2dfc1295d92073b5ea1dc8ef8da95f14dfded011ffb96d3e54b", "$"},
+  {"bbf3f11cb5b43e700273a78d12de55e4a7eab741ed2abf13787a4d2dc832b8ec", "%"},
+  {"74cd9ef9c7e15f57bdad73c511462ca65cb674c46c49639c60f1b44650fa1dcb", "^"},
+  {"951dcee3a7a4f3aac67ec76a2ce4469cc76df650f134bf2572bf60a65c982338", "&"},
+  {"684888c0ebb17f374298b65ee2807526c066094c701bcc7ebbe1c1095f494fc1", "*"},
+  {"32ebb1abcc1c601ceb9c4e3c4faba0caa5b85bb98c4f1e6612c40faa528a91c9", "("},
+  {"ba5ec51d07a4ac0e951608704431d59a02b21a4e951acc10505a8dc407c501ee", ")"},
+  {"a318c24216defe206feeb73ef5be00033fa9c4a74d0b967f6532a26ca5906d3b", "+"},
+  {"3973e022e93220f9212c18d0d0c543ae7c309e46640da93a4a0314de999f5112", "-"},
+  {"d2e2adf7177b7a8afddbc12d1634cf23ea1a71020f6a1308070a16400fb68fde", "_"},
+  {"380918b946a526640a40df5dced6516794f3d97bbd9e6bb553d037c4439f31c3", "="},
+  {"41b805ea7ac014e23556e98bb374702a08344268f92489a02f0880849394a1e4", ";"},
+  {"e7ac0786668e0ff0f02b62bd04f45ff636fd82db63b1104601c975dc005f3a67", ":"},
+  {"cbe5cfdf7c2118a9c3d78ef1d684f3afa089201352886449a06a6511cfef74a7", "|"},
+  {"8a5edab282632443219e051e4ade2d1d5bbc671c781051bf1437897cbdfea0f1", "/"},
+  {"a9253dc8529dd214e5f22397888e78d3390daa47593e26f68c18f97fd7a3876b", "\\"},
 }
 
 var blake2b256_tests = []blake2b256sum{
@@ -216,6 +244,18 @@ func BenchmarkDecode(b *testing.B) {
     _, err := base64.StdEncoding.DecodeString(encoded)
     if err != nil {
       panic(err)
+    }
+  }
+}
+
+func TestSymbols(t *testing.T) {
+  for i := 0; i < len(sha256_symbols); i++ {
+    q := sha256_symbols[i]
+    f := FoundSHA256(q.result)[10:]
+    if f != q.symbols_pack {
+      t.Errorf("hash '%v' not found", q.symbols_pack)
+    } else {
+      t.Logf("symbol '%v' sha256_symbols '%v' found", q.result, q.symbols_pack)
     }
   }
 }
