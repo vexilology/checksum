@@ -85,6 +85,3 @@ hashgosum -f=filename -a=sha256 -save -c=sha256_filename.txt
 | fnv1a-128       |  128 - bit    |
 
 </details>
-
-## TODO list
-click [`her`](./TODO)
