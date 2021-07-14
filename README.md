@@ -5,8 +5,6 @@
 ## Install Ubuntu
 
 ```
-[!] For the first option you need to check the location of the go/bin folder.
-
 go get -u github.com/vexilology/hashgosum
 sudo ln -sf ~/go/bin/hashgosum /usr/bin/hashgosum
 
@@ -26,9 +24,9 @@ make list
 ```
 hashgosum -help
 
-hashgosum -s="hello world" -a=sha256
-hashgosum -s="hello world" -a=sha256 -save
-hashgosum -s="hello world" -a=sha256 -save -c=sha256_string.txt
+hashgosum -s='hello world' -a=sha256
+hashgosum -s='hello world' -a=sha256 -save
+hashgosum -s='hello world' -a=sha256 -save -c=sha256_string.txt
 
 hashgosum -f=filename -a=sha256
 hashgosum -f=filename -a=sha256 -save

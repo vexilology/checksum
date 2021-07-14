@@ -46,6 +46,7 @@ func parseFlags() {
   flag.Parse()
 
   if *isHelp {
+    fmt.Println("[!] Only use single quotes. Other quotes can cause errors. [!]\n")
     fmt.Println("Available:", []string(algorithm_list))
     flag.PrintDefaults()
   } else if *fileFound != "" {
